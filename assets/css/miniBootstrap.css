@@ -1,0 +1,9 @@
+[data-hover="dropdown"]:hover + .dropdown-menu {margin-top: 0px;display:block;} 
+[data-hover="dropdown"] + .dropdown-menu:hover {display:block;}
+#user-dropdown:hover > .dropdown-menu {margin-top: 0px;display:block;} 
+#user-dropdown > .dropdown-menu:hover {display:block;}
+
+.dropdown-hover .dropdown-menu { margin-top: 0px;} 
+.dropdown-toggle:focus + .dropdown-menu {display:block;}
+.dropdown-menu:hover {display:block;}
+
