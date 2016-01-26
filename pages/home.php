@@ -3,7 +3,7 @@
 $num_art = (int) Db::Get('select count(*) from {pages} where `type` = "article" AND pub_rev > 0');
 
 if (!$num_art) {
-	return print '<div style="text-align: center;margin:20px;" class="alert alert-warning">Aucun article à afficher !</div>';
+	return print '<div style="text-align: center;margin:20px;" class="alert alert-warning">'.__('home.no_article').' !</div>';
 }
 
 $pn = isset($_GET['pn']) ? (int)$_GET['pn'] : 0;

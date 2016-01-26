@@ -1,8 +1,8 @@
 <ul class="nav nav-tabs">
-	<li class="<?=$tab_mail?:'active'?>"><a href="#inbox" data-toggle="tab">Boîte de réception <span class='label label-success'><?= count($mail_inbox) ?></span></a></li>
-	<li><a href="#outbox" data-toggle="tab">Envoyé <span class='label label-info'><?= count($mail_outbox) ?></span></a></li>
-	<li><a href="#trash" data-toggle="tab">Supprimé <span class='label label-info'><?= count($mail_trash) ?></span></a></li>
-	<li class="<?=!$tab_mail?:'active'?>"><a href="#mail" data-toggle="tab"><i class="fa fa-pencil"></i> Composer un message</a></li>
+	<li class="<?=$tab_mail?:'active'?>"><a href="#inbox" data-toggle="tab"><?= __('mail.mailbox') ?> <span class='label label-success'><?= count($mail_inbox) ?></span></a></li>
+	<li><a href="#outbox" data-toggle="tab"><?= __('mail.mailsent') ?> <span class='label label-info'><?= count($mail_outbox) ?></span></a></li>
+	<li><a href="#trash" data-toggle="tab"><?= __('mail.maildelete') ?> <span class='label label-info'><?= count($mail_trash) ?></span></a></li>
+	<li class="<?=!$tab_mail?:'active'?>"><a href="#mail" data-toggle="tab"><i class="fa fa-pencil"></i> <?= __('mail.mailwriter') ?></a></li>
 	<li><a href="<?=create_url('mail');?>"><i class="fa fa-refresh"></i></a></li>
 </ul>
 <div class="tab-content">
@@ -11,9 +11,9 @@
 		<thead>
 			<tr>
 				<th style='width: 40px;'> </th>
-				<th style='width:130px;'>Expéditeur</th>
-				<th>Sujet du message</th>
-				<th>Date de réception</th>
+				<th style='width:130px;'><?= __('mail.sender') ?></th>
+				<th><?= __('mail.subject') ?></th>
+				<th><?= __('mail.rdate') ?></th>
 				<th style="width:80px;"> </th>
 			</tr>
 		</thead>
@@ -24,17 +24,17 @@
 					echo '<tr>';
 						echo '<td>';
 							if ($mail['viewed']) {
-								echo '<i title="Message lu" class="fa fa-2x ' . $_message_type[$mail['type']][3] . '">';
+								echo '<i title="'.__('mail.ico_open').'" class="fa fa-2x ' . $_message_type[$mail['type']][3] . '">';
 							} else {
-								echo '<i title="Nouveau message" class="fa fa-2x ' . $_message_type[$mail['type']][2] . '">';
+								echo '<i title="'.__('mail.ico_new').'" class="fa fa-2x ' . $_message_type[$mail['type']][2] . '">';
 							}
 						echo '</td>';
 						echo '<td>' . html_encode($mail['username']) . '</td>';
 						echo '<td>' . html_encode($mail['sujet']) . '</td>';
 						echo '<td style="white-space:nowrap;">' . today($mail['posted'], true) . '</td>';
 						echo '<td class="text-right btn-group">';
-							echo '<a href="' . create_url('mail#mail', ['id' => $mail['id']]) . '" title="Lire ce message" class="btn btn-primary btn-sm"><i class="fa fa-eye fa-1"></i></a> ';
-							echo "<button name='del_email' value='{$mail['id']}' title='Supprimer ce message' class='btn btn-danger btn-sm'><i class='fa fa-times'></i></button> ";
+							echo '<a href="' . create_url('mail#mail', ['id' => $mail['id']]) . '" title="'.__('mail.btn_read').'" class="btn btn-primary btn-sm"><i class="fa fa-eye fa-1"></i></a> ';
+							echo "<button name='del_email' value='{$mail['id']}' title='".__('mail.btn_del')."' class='btn btn-danger btn-sm'><i class='fa fa-times'></i></button> ";
 						echo '</td>';
 					echo '</tr>';
 				}
@@ -46,10 +46,10 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Destinataire</th>
-				<th>Sujet du message</th>
-				<th>Date d'envoi</th>
-				<th>Date de lecture</th>
+				<th><?= __('mail.recipient') ?></th>
+				<th><?= __('mail.subject') ?></th>
+				<th><?= __('mail.sdate') ?></th>
+				<th><?= __('mail.readdate') ?></th>
 				<th style="width:80px"> </th>
 			</tr>
 		</thead>
@@ -62,8 +62,8 @@
 						echo '<td>' . html_encode($mailsent['sujet']) . '</td>';
 						echo '<td>' . today($mailsent['posted']) . '</td>';
 						echo '<td>' . today($mailsent['viewed']) . '</td>';
-						echo '<td class="btn-group"><a href="'.create_url('mail#mail', ['id' => $mailsent['id']]).'" title="Lire ce message" class="btn btn-primary btn-sm"><i class="fa fa-eye fa-1"></i></a> ';
-						echo "<button name='del_email' value='{$mailsent['id']}' title='Supprimer ce message' class='btn btn-danger btn-sm'><i class='fa fa-times'></i></button></td>";
+						echo '<td class="btn-group"><a href="'.create_url('mail#mail', ['id' => $mailsent['id']]).'" title="'.__('mail.btn_read').'" class="btn btn-primary btn-sm"><i class="fa fa-eye fa-1"></i></a> ';
+						echo "<button name='del_email' value='{$mailsent['id']}' title='".__('mail.btn_del')."' class='btn btn-danger btn-sm'><i class='fa fa-times'></i></button></td>";
 					echo "</tr>";
 				}
 			?>
@@ -75,10 +75,10 @@
 		<thead>
 			<tr>
 				<th> </th>
-				<th>Destinataire</th>
-				<th>Sujet du message</th>
-				<th>Date d'envoi</th>
-				<th>Date de lecture</th>
+				<th><?= __('mail.recipient') ?></th>
+				<th><?= __('mail.subject') ?></th>
+				<th><?= __('mail.sdate') ?></th>
+				<th><?= __('mail.readdate') ?></th>
 				<th></th>
 			</tr>
 		</thead>
@@ -89,9 +89,9 @@
 					echo '<tr>';
 						echo '<td style="width: 40px;">';
 						if ($smailbox['viewed']) {
-							echo '<i title="Message lu" class="fa fa-2x fa-eye">';
+							echo '<i title="'.__('mail.ico_open').'" class="fa fa-2x fa-eye">';
 						} else {
-							echo '<i title="Message non lu" class="fa fa-2x fa-envelope">';
+							echo '<i title="'.__('mail.ico_new').'" class="fa fa-2x fa-envelope">';
 						}
 						echo '</td>';
 						echo '<td style="width:110px;">' . html_encode($smailbox['username']) . '</td>';
@@ -99,7 +99,7 @@
 						echo '<td>' . today($smailbox['posted']) . '</td>';
 						echo '<td>' . today($smailbox['viewed']) . '</td>';
 						echo '<td class="text-right">';
-							echo "<button name='restore_email' value='{$smailbox['id']}' title='Restaurer ce message' class='btn btn-success btn-sm'><i class='fa fa-save'></i></button> ";
+							echo "<button name='restore_email' value='{$smailbox['id']}' title='".__('mail.btn_restore')."' class='btn btn-success btn-sm'><i class='fa fa-save'></i></button> ";
 						echo '</td>';
 					echo '</tr>';
 				}
@@ -126,7 +126,7 @@
 					<div class="flag">
 						<a style="color:#aaa;" href="<?=create_url('mail#mail', ['id' => $message['id']])?>">#<?=$message['id']?></a><br> 
 						<?=$_message_type[$message['type']][1]?>
-						<button type="submit" onclick="return confirm(\'Sur?\');" name="del_email" value="<?=$message['id']?>" class="btn btn-xs btn-danger" title="Supprimer" style="padding:2px;"><i class="fa fa-trash-o"></i></button>
+						<button type="submit" onclick="return confirm(\'Sur?\');" name="del_email" value="<?=$message['id']?>" class="btn btn-xs btn-danger" title="<?= __('mail.btn_del') ?>" style="padding:2px;"><i class="fa fa-trash-o"></i></button>
 					</div>
 					<div class="auteur">
 						<strong><a href="<?=create_url('user', ['id' => $message['s_id']])?>"><?=html_encode($message['username'])?></a></strong> 
@@ -144,30 +144,30 @@
 
 	<form method="post" action="<?=create_url('mail')?>">
 		<div class="commentaires text-center">
-		<textarea class="form-control" name="message" placeholder="Répondre à ce message..."></textarea><br>
-		<button class="btn btn-success" name="id" value="<?=$reply?>" type="submit">Envoyer</button> <a class="btn btn-danger" href="<?=create_url('mail')?>#mail">Annuler</a>
+		<textarea class="form-control" name="message" placeholder="<?= __('mail.disc_reply') ?>"></textarea><br>
+		<button class="btn btn-success" name="id" value="<?=$reply?>" type="submit"><?= __('mail.btn_send') ?></button> <a class="btn btn-danger" href="<?=create_url('mail')?>#mail"><?= __('mail.btn_cancel') ?></a>
 		</div>
 	</form>
 	
 <?php } elseif($can_send) { ?>
 
 	<form method="post" action="<?=create_url('mail')?>">
-		<legend>Envoyer un message</legend>
+		<legend><?= __('mail.writer_title') ?></legend>
 		<div class="form-horizontal text-center">
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="query">À :</label>
+			<label class="col-sm-2 control-label" for="query"><?= __('mail.writer_to') ?> :</label>
 			<div class="col-sm-8 control">
 				<input id="query" name="username" class="form-control"  data-autocomplete="userlist" type="text" value="<?=html_encode(_POST('username') ?: ((string)(int)_GP('id') === _GP('id') ? '' : _GP('id'))) ?>">
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="sujet">Sujet :</label>
+			<label class="col-sm-2 control-label" for="sujet"><?= __('mail.subject') ?> :</label>
 			<div class="col-sm-8 control">
 				<input name="sujet" class="form-control" type="text" maxlength="32" value="<?=html_encode(_POST('sujet'))?>">
 			</div>
 		</div>
-		<textarea class="form-control" name="message" placeholder="Composer un message..."><?=html_encode(_POST('message'))?></textarea><br>
-		<button class="btn btn-primary" type="submit" name="id" value="">Envoyer le message</button>
+		<textarea class="form-control" name="message" placeholder="<?= __('mail.writer_textarea') ?>"><?=html_encode(_POST('message'))?></textarea><br>
+		<button class="btn btn-primary" type="submit" name="id" value=""><?= __('mail.btn_send') ?></button>
 		</div>
 	</form>
 	

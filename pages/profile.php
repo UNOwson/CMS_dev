@@ -171,54 +171,54 @@ if ($_POST) {
 	}
 }
 ?>
-<legend>Modification du profil de <?php echo $user_info['username']?></legend>
+<legend><?= __('profile.title') ?> <?php echo $user_info['username']?></legend>
 <form method="post" role="form" class="form-horizontal" autocomplete="off">
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="username">Nom d'utilisateur :</label>
+		<label class="col-sm-4 control-label" for="username"><?= __('profile.username') ?> :</label>
 		<div class="col-sm-6">
 			<input class="form-control" name="username" type="text" value="<?php echo $user_info['username']?>">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="mail">Votre Email :</label>
+		<label class="col-sm-4 control-label" for="mail"><?= __('profile.email') ?> :</label>
 		<div class="col-sm-6">
 			<input class="form-control password-required" name="email" type="text" data-old-value="<?php echo html_encode($user_info['email'])?>" value="<?php echo html_encode($user_info['email'])?>">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="mail">Votre Pays :</label>
+		<label class="col-sm-4 control-label" for="mail"><?= __('profile.country') ?> :</label>
 		<div class="col-sm-6">
 			<?php echo html_select('country', $_countries, $user_info['country']); ?>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="mail">Fuseau horaire :</label>
+		<label class="col-sm-4 control-label" for="mail"><?= __('profile.tzone') ?> :</label>
 		<div class="col-sm-6">
 			<?php echo html_select('timezone', $timezones, $user_session['timezone'] ?: Site('timezone'), false); ?>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="newsletter">Options :</label>
+		<label class="col-sm-4 control-label" for="newsletter"><?= __('profile.options') ?> :</label>
 		<div class="col-sm-8">
 			<input id="hide_email" name="hide_email" type="checkbox" value="1" <?php if ($user_info['hide_email'] == 1) echo 'checked';?>>
-			<label for="hide_email" class="normal">Cacher mon email des autres membres</label><br>
+			<label for="hide_email" class="normal"><?= __('profile.opt1') ?></label><br>
 			<input id="newsletter" name="newsletter" type="checkbox" value="1" <?php if (@$user_info['newsletter'] == 1) echo 'checked';?>>
-			<label for="newsletter" class="normal">Je désire recevoir la newsletter</label><br>
+			<label for="newsletter" class="normal"><?= __('profile.opt2') ?></label><br>
 			<input id="discuss" name="discuss" type="checkbox" value="1" <?php if ($user_info['discuss'] == 1) echo 'checked';?>>
-			<label for="discuss" class="normal">Activer le mode discussion pour messagerie interne</label><br>
+			<label for="discuss" class="normal"><?= __('profile.opt3') ?></label><br>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="password">Mot de passe :</label>
+		<label class="col-sm-4 control-label" for="password"><?= __('profile.password') ?> :</label>
 		<div class="col-sm-6">
 			<input name="password" type="password" hidden><!-- that's to stop chrome's autocomplete -->
-			<input name="password" type="password" data-old-value="" class="form-control password-required" placeholder="Nouveau mot de passe">
+			<input name="password" type="password" data-old-value="" class="form-control password-required" placeholder="<?= __('profile.password_old') ?>">
 			<br>
-			<input name="password_old" type="password" class="form-control" placeholder="Mot de passe actuel">
+			<input name="password_old" type="password" class="form-control" placeholder="<?= __('profile.password_new') ?>">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="parrain">Mon parrain :</label>
+		<label class="col-sm-4 control-label" for="parrain"><?= __('profile.recruiter') ?> :</label>
 		<div class="col-sm-4">
 			<input class="form-control" data-autocomplete="userlist" name="raf" id="parrain" type="text" value="<?= html_encode($user_info['raf'])?>" <?php if (!isset($fields['raf'])) echo 'disabled'; ?>>
 		</div>
@@ -232,7 +232,7 @@ if ($_POST) {
 	</div>
 	<?php } ?>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="permission">Niveau du compte :</label>
+		<label class="col-sm-4 control-label" for="permission"><?= __('profile.acc_lvl') ?> :</label>
 		<div class="col-sm-6">
 			<?php
 				$groups = Db::QueryAll('select * from {groups} order by priority asc', true);
@@ -252,7 +252,7 @@ if ($_POST) {
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="theme">Thème :</label>
+		<label class="col-sm-4 control-label" for="theme"><?= __('profile.theme') ?> :</label>
 		<div class="col-sm-6">
 				<?php
 					if (Site('change_theme'))
@@ -263,10 +263,10 @@ if ($_POST) {
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-4 control-label" for="avatar">Mon Avatar :</label>
+		<label class="col-sm-4 control-label" for="avatar"><?= __('profile.avatar') ?> :</label>
 		<div class="col-sm-5">
 			<?php echo html_select('avatar', $avatars, $user_info['avatar'], true, ['class' => 'avatar_selector form-control']); ?>
-			<span style="margin-left: 10px;position: relative;top: -4px;"><img id="avatar_selector_preview" title="Votre avatar actuel" width="42" height="42" src="<?php echo get_avatar($user_info, 42, true)?>"></span>
+			<span style="margin-left: 10px;position: relative;top: -4px;"><img id="avatar_selector_preview" title="<?= __('profile.curravatar') ?>" width="42" height="42" src="<?php echo get_avatar($user_info, 42, true)?>"></span>
 		</div>
 	</div>
 	
@@ -274,49 +274,49 @@ if ($_POST) {
 	
 	<br><br>
 	
-	<legend>Les réseaux sociaux</legend>
+	<legend><?= __('profile.sn_title') ?></legend>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="facebook" title="Facebook"><i class="fa fa-facebook fa-2x"></i></label>
 		<div class="col-sm-6">
-			<input class="form-control" id="facebook" name="facebook" type="text" value="<?php echo html_encode($user_info['facebook'])?>" placeholder="Nom de compte facebook">
+			<input class="form-control" id="facebook" name="facebook" type="text" value="<?php echo html_encode($user_info['facebook'])?>" placeholder="<?= __('profile.sn_fb') ?>">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="twitter" title="Twitter"><i class="fa fa-twitter fa-2x"></i></label>
 		<div class="col-sm-6">
-			<input class="form-control" id="twitter" name="twitter" type="text" value="<?php echo html_encode($user_info['twitter'])?>" placeholder="Nom de compte twitter">
+			<input class="form-control" id="twitter" name="twitter" type="text" value="<?php echo html_encode($user_info['twitter'])?>" placeholder="<?= __('profile.sn_tweeter') ?>">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="skype" title="Skype"><i class="fa fa-skype fa-2x"></i></label>
 		<div class="col-sm-6">
-			<input class="form-control" id="skype" name="skype" type="text" value="<?php echo html_encode($user_info['skype'])?>" placeholder="Nom de compte skype">
+			<input class="form-control" id="skype" name="skype" type="text" value="<?php echo html_encode($user_info['skype'])?>" placeholder="<?= __('profile.sn_skype') ?>">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="twitch" title="Twitch"><i class="fa fa-twitch fa-2x"></i></label>
 		<div class="col-sm-6">
-			<input class="form-control" id="twitch" name="twitch" type="text" value="<?php echo html_encode($user_info['twitch'])?>" placeholder="Nom de compte twitch">
+			<input class="form-control" id="twitch" name="twitch" type="text" value="<?php echo html_encode($user_info['twitch'])?>" placeholder="<?= __('profile.sn_twitch') ?>">
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="youtube" title="Youtube"><i class="fa fa-youtube fa-2x"></i></label>
 		<div class="col-sm-6">
-			<input class="form-control" id="youtube" name="youtube" type="text" value="<?php echo html_encode($user_info['youtube'])?>" placeholder="Adresse du channel youtube">
+			<input class="form-control" id="youtube" name="youtube" type="text" value="<?php echo html_encode($user_info['youtube'])?>" placeholder="<?= __('profile.sn_youtube') ?>">
 		</div>
 	</div>
 	
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="website" title="Site web"><i class="fa fa-globe fa-2x"></i></label>
 		<div class="col-sm-6">
-			<input class="form-control" id="website" name="website" type="text" value="<?php echo html_encode($user_info['website'])?>" placeholder="Votre site internet">
+			<input class="form-control" id="website" name="website" type="text" value="<?php echo html_encode($user_info['website'])?>" placeholder="<?= __('profile.sn_website') ?>">
 		</div>
 	</div>
 
-	<legend>Présentation</legend>
+	<legend><?= __('profile.prez_title') ?></legend>
 	<div class="form-group">
 		<div class="col-md-10 col-md-offset-1">
-			<textarea class="form-control" name="about" placeholder="Présentez vous!"><?php echo html_encode($user_info['about'])?></textarea>
+			<textarea class="form-control" name="about" placeholder="<?= __('profile.prez_textarea') ?>"><?php echo html_encode($user_info['about'])?></textarea>
 		</div>
 	</div>
 	
