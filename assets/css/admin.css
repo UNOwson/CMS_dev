@@ -2,10 +2,11 @@ body {
 	background: #222;
 	width: 100%;
 	font-size: 14px;
-	font-family: Ubuntu;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,700,500italic,700italic);
 
 body {
   background-image: url("https://fkcd.ca/Lh5.png");
@@ -104,7 +105,7 @@ ul {padding-left: 0px;}
 #menu_ico a:hover {color: white}
 .dropdown-header {
     font-size: 14px;
-    font-family: Ubuntu;
+    font-family: 'Ubuntu', sans-serif;
     position: relative;
     top: 4px;
 }
@@ -126,7 +127,7 @@ ul {padding-left: 0px;}
     margin-bottom: 0;
     font-size: 15px;
     color: inherit;
-    font-family: Ubuntu;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 100;
 }
 #chart {
@@ -171,7 +172,7 @@ ul {padding-left: 0px;}
 #charts > .visitors {
   border: 3px solid #C71C22;
 }
-#charts > #chart > .title {color:#414548;font-size: 8pt;font-family: Ubuntu;}
+#charts > #chart > .title {color:#414548;font-size: 8pt;font-family: 'Ubuntu', sans-serif;}
 #charts > #chart > .info {font-size: 20px;margin: 15px 0px 0px;}
 
 .panel {
@@ -184,7 +185,7 @@ ul {padding-left: 0px;}
     margin:0 auto;
   }
   #stats_data legend {
-  	font-family: Ubuntu;
+  	font-family: 'Ubuntu', sans-serif;
     font-size: 15px;
   	font-weight: 300
   }
@@ -192,7 +193,7 @@ ul {padding-left: 0px;}
     margin-right: 5px;
   }
   #stats_data ul {
-    font-family: Ubuntu;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 10pt;
     font-weight: 100;
     list-style: none;
@@ -222,7 +223,7 @@ ul {padding-left: 0px;}
     background-color: rgb(65, 69, 72); color: white;
     
 }
-  .panel-heading > h3 {font-family: Ubuntu;font-weight: 300;font-size: 14px;}
+  .panel-heading > h3 {font-family: 'Ubuntu', sans-serif;font-weight: 300;font-size: 14px;}
 
 #admin-menu > li > .dropdown-menu {top: 0%;left: 70px;}
 
