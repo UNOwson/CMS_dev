@@ -21,14 +21,13 @@ body {
   position:fixed;
   top: 0px;
   z-index: 1;
-	-webkit-box-shadow: 0px 5px 5px -7px #222);
-	-moz-box-shadow: 0px 5px 5px -7px #222;
-	box-shadow: 0px 5px 5px -7px #222;
+	-webkit-box-shadow: (0px 5px 5px -7px #222);
+	-moz-box-shadow: (0px 5px 5px -7px #222);
+	box-shadow: (0px 5px 5px -7px #222);
 }
 
 #logo_zone{
   padding: 10px;
-  #background-color: #222;
   height: 70px;
 }
 #logo_zone > img {width: 45px;height: 45px;}
@@ -88,7 +87,6 @@ ul {padding-left: 0px;}
   padding-right: 0px;
   padding-left: 0px;
   position: absolute;
- # min-height: 100%;
   border-bottom-right-radius: 5px;
 }
 #menu_zone #logo_zone {background-color: rgb(32, 32, 32);}
@@ -234,7 +232,6 @@ ul {padding-left: 0px;}
 
 #admin-menu > li > a {
     color: #818181;
-    #background: #3f3f3f;
 }
 
 #admin-menu > li > ul {
@@ -297,7 +294,6 @@ ul {padding-left: 0px;}
 }
 
 #footer, #footer a {
-	#color: #fff;
 }
 
 #debug {
