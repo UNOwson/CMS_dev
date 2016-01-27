@@ -86,7 +86,7 @@ has_permission(null, true);
 		$participants = [];
 		
 		foreach($mails as $mail) {
-			$participants[] = $mail['username'];
+			$participants[$mail['username']] = $mail['username'];
 		}
 		
 		$reply = $mails[0]['reply'] ?: $mails[0]['id'];
