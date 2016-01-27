@@ -4,7 +4,7 @@
 	</div>
 	<div class="panel-body">
 		<form class="form-horizontal form-group">
-			<label class="col-sm-2 control-label">Lien</label>
+			<label class="col-sm-2 control-label"><?= __('raf.field_link') ?></label>
 			<div class="col-sm-10">
 				<input class="form-control" value="<?= html_encode($raf_url) ?>" onclick="this.setSelectionRange(0, this.value.length)" readonly style="cursor: pointer;">
 			</div>

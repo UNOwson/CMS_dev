@@ -13,10 +13,10 @@
 			</a>
 		</div>
 		<div class="links">
-			<a href="<?= Site('theme.facebook'); ?>"><img src="<?= get_asset('/img/social/facebook.png') ?>" width="38" alt="facebook" title="Notre page Facebook"></a>
-			<a href="<?= Site('theme.twitter'); ?>"><img src="<?= get_asset('/img/social/twitter.png') ?>" width="38" alt="twitter" title="Notre compte twitter"></a>
-			<a href="<?= Site('theme.youtube'); ?>"><img src="<?= get_asset('/img/social/youtube.png') ?>" width="38" alt="youtube" title="Notre chaîne Youtube"></a>
-			<a href="<?= create_url('feed')?>"><img src="<?= get_asset('/img/social/rss.png') ?>" width="38" alt="rss" title="Lisez notre flux !"></a>
+			<a href="<?= Site('theme.facebook'); ?>"><img src="<?= get_asset('/img/social/facebook.png') ?>" width="38" alt="facebook" title="<?= __('main.link_fb') ?>"></a>
+			<a href="<?= Site('theme.twitter'); ?>"><img src="<?= get_asset('/img/social/twitter.png') ?>" width="38" alt="twitter" title="<?= __('main.link_tw') ?>"></a>
+			<a href="<?= Site('theme.youtube'); ?>"><img src="<?= get_asset('/img/social/youtube.png') ?>" width="38" alt="youtube" title="<?= __('main.link_yt') ?>"></a>
+			<a href="<?= create_url('feed')?>"><img src="<?= get_asset('/img/social/rss.png') ?>" width="38" alt="rss" title="<?= __('main.link_rss') ?>"></a>
 		</div>
 	</div>
 	<div class="clearfix"></div>
@@ -26,7 +26,7 @@
 			<div id="zone_login">
 			<?php if (has_permission()) { ?>
 				<div class="avatar_container"><?= get_avatar($user_session) ?></div>
-				<div class="welcome">Bienvenue <?= $user_session['username'] ?></div>
+				<div class="welcome"><?= __('main.welcome') ?> <?= $user_session['username'] ?></div>
 				<?php include get_template('userdropdown.php'); ?>
 			<?php } else { ?>
 				<div class="text-center">
