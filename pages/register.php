@@ -6,19 +6,19 @@ else
 	$raf = '';
 
 if (!has_permission('admin.') && (Site('open_registration') == 0 || (Site('open_registration') == 2 && !$raf))) {
-	return $_warning = 'Désolé, les inscriptions publiques sont closes.';
+	return $_warning = 'Désolé'.__('register.closed').'';
 }
 
 $fields = [
 	'username' => [
-		'label' => 'Nom d\'utilisateur: ',
+		'label' => ''.__('register.field_username').' : ',
 		'type' => 'text',
 		'value' => _POST('username'),
 		'validation' => PREG_USERNAME,
 		'required' => true,
 	],
 	'email' => [
-		'label' => 'Votre Email: ',
+		'label' => ''.__('register.field_email').' : ',
 		'type' => 'text',
 		'value' => _POST('email'),
 		'validation' => PREG_EMAIL,
@@ -30,14 +30,14 @@ $fields = [
 		'validation' => PREG_DIGIT,
 		'fields' => [
 			'hide_email' => [
-				'label' => ' Cacher mon email des autres membres',
+				'label' => ' '.__('register.checkbox_email').'',
 				'type' => 'checkbox',
 				'checked' => (!$_POST || isset($_POST['hide_email'])),
 				'value' => 1,
 				'validation' => PREG_DIGIT,
 			],
 			'newsletter' => [
-				'label' => 'Je désire recevoir la newsletter',
+				'label' => ' '.__('register.checkbox_newsletter').'',
 				'type' => 'checkbox',
 				'checked' => (!$_POST || isset($_POST['newsletter'])),
 				'value' => 1,
@@ -46,25 +46,25 @@ $fields = [
 		],
 	],
 	'password' => [
-		'label' => 'Mot de passe: ',
+		'label' => ''.__('register.field_password').' : ',
 		'type' => 'password',
 		'value' => _POST('password'),
 		'validation' => PREG_USERNAME,
 		'required' => true,
 	],
 	'password_confirm' => [
-		'label' => 'Confirmation: ',
+		'label' => ''.__('register.field_passconfirm').' : ',
 		'type' => 'password',
 		'value' => _POST('password_confirm'),
 	],
 	'raf' => [
-		'label' => 'Parrain: ',
+		'label' => ''.__('register.field_recruiter').' : ',
 		'type' => 'text',
 		'value' => $raf,
 		'attributes' => 'disabled',
 	],
 	'avatar' => [
-		'label' => 'Mon avatar: ',
+		'label' => ''.__('register.field_avatar').' : ',
 		'type' => 'avatar',
 		'value' => _POST('avatar'),
 		'attributes' => 'disabled',
@@ -98,20 +98,20 @@ if ($_POST) {
 			(is_string($f['validation']) && !preg_match($f['validation'], $value))) // OR if not acceptable string
 			&& !($f['required'] !== true && $value === '') // AND if the parameter is not both empty and optional
 		) {
-			$_warning .= 'Champ invalide: '.$field.'<br>';
+			$_warning .= ''.__('register.field_invalid').' : '.$field.'<br>';
 		} elseif ($f['required'] === true && $value === '') {
-			$_warning .= 'Champ requis: '.$field.'<br>';
+			$_warning .= ''.__('register.field_require').' : '.$field.'<br>';
 		}
 	}
 	
 	if ($ban = check_banlist($_POST)) {
-		$_warning .= 'Désolé cet utilisateur ou email a été banni: ' . html_encode($ban['reason']) .' <br>';
+		$_warning .= ''.__('register.check_banlist').' : ' . html_encode($ban['reason']) .' <br>';
 	}
 	
 	$user_exists = Db::Get('select username FROM {users} WHERE username = ? or email = ?', $_POST['username'], $_POST['email']);
 
 	if ($user_exists) {
-		$_warning .= strcasecmp($user_exists, $_POST['username']) !== 0 ? 'Un membre utilisant cet email existe déjà!' : 'Un membre utilisant cet utilisateur existe déjà!';
+		$_warning .= strcasecmp($user_exists, $_POST['username']) !== 0 ? ''.__('register.exist_email').' !' : ''.__('register.exist_username').' !';
 	}
 	
 	if ($_POST['avatar'] === '/assets/img/gravatar.jpg') { //Temp hack
@@ -141,22 +141,19 @@ if ($_POST) {
 		if ($q !== false) {
 			$uid = Db::$insert_id;
 			
-			log_event($uid, 'user', 'Inscription sur le site.');
+			log_event($uid, 'user', ''.__('register.log').'');
 			
 			plugins::trigger('account_created', array($uid));
 			
 			if (!has_permission('admin.') && Site('open_registration') == 3) {
 				if (send_activation_email($_POST['username'])) {
-					return print '<div class="bs-callout bs-callout-success"><h4>Félicitation</h4><p>
-									Votre compte a été créé avec succès ! 
-									Vous devriez recevoir un email sous peu afin d\'activer votre compte.
-									</p></div>';
+					return print '<div class="bs-callout bs-callout-success"><h4>'.__('register.congratulation').'</h4><p>'.__('register.success').'<br>'.__('register.mail_confirm').'</p></div>';
 				}
 				else {
 					log_event('admin', 'Unable to send mail to: ' . $_POST['email']);
 					log_event('user', 'Rolling back inscription of ' . $_POST['username'] . ' because activation link couldn\'t be sent.');
 					Db::Exec('delete from {users} where id = ?', $uid);
-					return $_warning = 'Erreur lors de l\'envoi du mail d\'activation. Veuillez nous contacter ou réessyaer plus tard!';
+					return $_warning = ''.__('register.mail_error').'';
 				}
 			}
 			
@@ -165,22 +162,22 @@ if ($_POST) {
 			}
 			
 			return print '<div class="bs-callout bs-callout-success">
-							<h4>Félicitation</h4><p>
-							Votre compte a été créé avec succès et vous êtes maintenant connecté !
+							<h4>'.__('register.congratulation').'</h4><p>
+							'.__('register.success_connect').'
 						  </p></div>';
 		} else {
 			return print '<div class="bs-callout bs-callout-warning">
-							<h4>Oh oh</h4><p>La création de votre compte a échouée!</p></div>';
+							<h4>'.__('register.damn').'</h4><p>'.__('register.error').'</p></div>';
 		}
 	}
 }
-echo build_form('Création de compte', $fields);
+echo build_form(''.__('register.title').'', $fields);
 ?>
 
 <script>
 $('form').submit(function() {
 	if ($('#password').val() != $('#password_confirm').val()) {
-		alert('Les mots de passe de sont pas identiques!');
+		alert(''.__('register.field_passconfirm_wrong').'');
 		return false;
 	}
 });

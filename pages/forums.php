@@ -15,7 +15,7 @@
 	  or at least documented!
  */
 
-defined('EVO') or die('Que fais-tu là?');
+defined('EVO') or die(''.__('403.msg').'');
 
 $_body_class = 'page-wide';
 
@@ -34,49 +34,49 @@ $last_visit = isset($_SESSION['last_visit']) ? $_SESSION['last_visit'] : 0;
 
 if (_GET('edit')) {
 	$post = Db::Get('select * from {forums_posts} where id = ? ', _GET('edit'));
-	if (!$post) return $_notice = 'Ce post n\'existe pas.';
+	if (!$post) return $_notice = ''.__('forums.edit_post').'';
 
 	$topic = Db::Get('select * from {forums_topics} where id = ? ', $post['topic_id']);
-	if (!$topic) return $_notice = 'Cette discussion n\'existe pas.';
+	if (!$topic) return $_notice = ''.__('forums.edit_disc').'';
 
 	$permission = has_permission('forum.moderation', $topic['forum_id']) || has_permission('mod.forum_post_edit');
 
 	if (!has_permission() || (!$permission && $post['poster_id'] != $user_session['id']))
-		return $_warning = 'Vous n\'avez pas le droit d\'éditer ce post.';
+		return $_warning = ''.__('forums.edit_right').'';
 
 	if ($topic['closed'] == 1 && !$permission)
-		return $_warning = 'Cette discussion est close.';
+		return $_warning = ''.__('forums.edit_closed').'';
 
 	$message = $post['message'];
 	$subject = $topic['subject'];
 
-	$mode = 'Édition';
+	$mode = ''.__('forums.edit_mode').'';
 }
 elseif (_GP('pid')) {
 	$post = Db::Get('select * from {forums_posts} where id = ? ', _GP('quote', _GP('pid')));
-	if (!$post) return $_notice = 'Ce post n\'existe pas.';
+	if (!$post) return $_notice = ''.__('forums.post_post').'';
 
 	$topic = Db::Get('select * from {forums_topics} where id = ? ', $post['topic_id']);
-	if (!$topic) return $_notice = 'Cette discussion n\'existe pas.';
+	if (!$topic) return $_notice = ''.__('forums.post_disc').'';
 
 	$pn = ceil (Db::Get('select count(*) from {forums_posts} where topic_id = ? and id <= ?', $post['topic_id'], $post['id']) / $posts_per_page);
 	$ptotal = ceil($topic['num_posts'] / $posts_per_page);
 
-	$mode = 'Nouvelle réponse';
+	$mode = ''.__('forums.post_mode').'';
 }
 elseif (_GP('topic')) {
 	$topic = Db::Get('select * from {forums_topics} where id = ? ', _GP('topic'));
 	if (!$topic) return $_notice = 'Cette discussion n\'existe pas.';
 
 	$ptotal = ceil($topic['num_posts'] / $posts_per_page);
-	$mode = 'Nouvelle réponse';
+	$mode = ''.__('forums.post_mode').'';
 }
 elseif (_GET('id')) {
 	$forum = Db::Get('select * from {forums} where id = ? ', _GET('id'));
 	if (!$forum) return $_notice = 'Ce forum n\'existe pas.';
 
 	$ptotal = ceil($forum['num_topics'] / $topics_per_page);
-	$mode = 'Nouvelle discussion';
+	$mode = ''.__('forums.post_disc_new').'';
 }
 
 if (isset($forum)) {
@@ -96,7 +96,7 @@ $edit_mode = isset($mode) && _GET('compose', _GET('edit', _GET('quote')));
 
 if (isset($topic)) {
 	$forum = Db::Get('select * from {forums} where id = ? ', $topic['forum_id']);
-	if (!$forum) return $_notice = 'Ce forum n\'existe pas.';
+	if (!$forum) return $_notice = ''.__('forums.forum_disc').'';
 
 	$sub = Db::Get('select count(*) from {subscriptions} where type = "forum" and user_id = ? and rel_id = ?', $user_session['id'], $topic['id']);
 
@@ -125,7 +125,7 @@ if (isset($post, $_POST['report'])) {
 		'reported' => time(),
 		'user_ip' => $_SERVER['REMOTE_ADDR']
 	));
-	log_event($user_session['id'], 'forum', 'Message flaggé dans le topic: '.$topic['subject']);
+	log_event($user_session['id'], 'forum', ''.__('forums.report').''.$topic['subject']);
 }
 
 
@@ -143,11 +143,11 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 	}
 	elseif (_POST('message') === '')
 	{
-		$_warning = 'Votre message ne peut être vide !';
+		$_warning = ''.__('forums.write.msg').'';
 	}
 	elseif (_POST('subject') === '')
 	{
-		$_warning = 'Votre sujet ne peut être vide !';
+		$_warning = ''.__('forums.write.subject').'';
 	}
 	elseif ($post && _GET('edit') && _POST('message')) //Edit
 	{
@@ -173,12 +173,12 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 		topic_subscribe($topic['id'], isset($_POST['subscribe']));
 
 		http_redirect(create_url('forums', ['topic'=>$topic['id'], 'pn'=>$pn], '#msg'.$post['id']));
-		$_success = 'Message enregistré !';
+		$_success = ''.__('forums.write_success').'';
 	}
 	elseif ($topic && _POST('message')) //Reply
 	{
 		if ($topic['closed'] && !($forum_moderator || has_permission('mod.forum_topic_close')))
-			return $_warning = 'Vous ne pouvez poster dans une discussion close.';
+			return $_warning = ''.__('forums.reply_disc').'';
 
 		$files = parse_attached_files(_POST('message'));
 
@@ -205,7 +205,7 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 		plugins::trigger('forum_new_post', array());
 
 		http_redirect(create_url('forums', ['topic'=>$topic['id'],'pn'=>ceil(($topic['num_posts']+1)/$posts_per_page)],'#msg'.$pid));  // compute last page!!
-		$_success = 'Message enregistré !';
+		$_success = ''.__('forums.write_success').'';
 	}
 	elseif ($forum && _POST('message')) //Topic
 	{
@@ -255,7 +255,7 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 			http_redirect(create_url('forums', ['topic'=>$tid]));
 		// }q
 
-		$_success = 'Message enregistré !';
+		$_success = ''.__('forums.write_success').'';
 	}
 
 	if (isset($topic))
@@ -263,27 +263,27 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 		if (_POST('move-topic'))
 		{
 			if (!$permission && !has_permission('mod.forum_topic_move'))
-				return $_warning = 'Vous n\'êtes pas autorisé à déplacer cette discussion.';
+				return $_warning = ''.__('forums.move_perm').'';
 
 			if ($topic['forum_id'] == $_POST['move-topic']) {
-				$_notice = 'Cette discussion est déjà dans le forum <strong>' . $forum['name'] . '</strong>.';
+				$_notice = ''.__('forums.move_already').' <strong>' . $forum['name'] . '</strong>.';
 			} elseif (Db::Exec('update {forums_topics} set forum_id = ? where id = ?', $_POST['move-topic'], $topic['id'])) {
-				$_success = 'La discussion a été déplacée';
+				$_success = ''.__('forums.move_success').'';
 				forum_refresh($_POST['move-topic']);
 				forum_refresh($topic['forum_id']);
 				$forum = Db::Get('select * from {forums} where id = ?', $_POST['move-topic']);
-				log_event($user_session['id'], 'forum', 'Discussion "' . $topic['subject'] . '" déplacée dans le forum: '. $forum['name']);
+				log_event($user_session['id'], 'forum', 'Discussion "' . $topic['subject'] . '" '.__('forums.move_to').' '. $forum['name']);
 			} else {
-				$_warning = 'La discussion n\'a pas été déplacée !';
+				$_warning = ''.__('forums.move_error').'';
 			}
 		}
 		elseif (_POST('delete-topic'))
 		{
 			if (!($forum_moderator || has_permission('mod.forum_topic_delete')))
-				return $_warning = 'Vous n\'êtes pas autorisé à supprimer cette discussion.';
+				return $_warning = ''.__('forums.topic_delete_perm').'';
 
 			if (!Db::Exec('delete from {forums_topics} where id = ?', $topic['id']))
-				return $_warning = 'La discussion n\'a pas été supprimée !';
+				return $_warning = ''.__('forums.topic').'';
 
 			Db::Exec('delete from {subscriptions} where type = "forum" and rel_id = ?', $topic['id']);
 			$u = DB::QueryAll('select poster_id, count(*) from {forums_posts} where topic_id = ? group by poster_id', $topic['id']);
@@ -296,7 +296,7 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 			Db::Exec('delete from {forums_posts} where topic_id = ?', $topic['id']);
 			Db::Exec('update {forums} set num_topics = num_topics - 1, num_posts = num_posts - ? where id = ?', $topic['num_posts'], $topic['forum_id']);
 
-			log_event($user_session['id'], 'forum', 'Discussion "' . $topic['subject'] . '" supprimée du forum: '. $forum['name']);
+			log_event($user_session['id'], 'forum', 'Discussion "' . $topic['subject'] . '" '.__('forums.topic_delete_from').' '. $forum['name']);
 
 			// forum_refresh($topic['forum_id']);
 			http_redirect(create_url('forums', $topic['forum_id']));
@@ -307,7 +307,7 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 			$post = Db::Get('select * from {forums_posts} where id = ? and topic_id = ?', $_GET['delete-post'], $topic['id']);
 
 			if (!$post || !has_permission() || (!($forum_moderator || has_permission('mod.forum_post_delete')) && $post['poster_id'] != $user_session['id']))
-				return $_warning = 'Vous n\'êtes pas autorisé à supprimer ce message.';
+				return $_warning = ''.__('forums.post_delete_perm').'';
 
 			DB::Exec('update {users} set num_posts = num_posts -1 where id = ?', $post['poster_id']);
 			Db::Exec('delete from {forums_posts} where id = ?', $_GET['delete-post']);
@@ -326,8 +326,8 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 				Db::Exec('update {forums} set num_posts = num_posts - 1 where id = ?', $topic['forum_id']);
 				Db::Exec('update {forums_topics} set num_posts = num_posts - 1 where id = ?', $topic['id']);
 				// forum_refresh($topic['forum_id']);
-				log_event($user_session['id'], 'forum', 'Discussion "' . $topic['subject'] . '" supprimée du forum: "'. $forum['name'].'" car le dernier post a été supprimé');
-				$_success = 'Le message a été supprimé.';
+				log_event($user_session['id'], 'forum', 'Discussion "' . $topic['subject'] . '" '.__('forums.topic_delete_from').' "'. $forum['name'].'"'.__('forums.post_delete_reason').'');
+				$_success = ''.__('forums.post_delete').'';
 			}
 		}
 		elseif (isset($_POST['sticky']) && ($forum_moderator || has_permission('mod.forum_topic_stick'))) {
@@ -336,12 +336,12 @@ if (isset($forum) && has_permission('forum.write', $forum['id']))
 			
 			Db::Exec('update {forums_topics} set sticky = ? where id = ?', $topic['sticky'], $topic['id']);
 			
-			$_success = 'Modification enregistrée !';
+			$_success = ''.__('forums.post_sticky').'';
 		}
 		elseif (_POST('closed') && ($forum_moderator || has_permission('mod.forum_topic_close'))) {
 			Db::Exec('update {forums_topics} set closed = ? where id = ?', $_POST['closed'], $_REQUEST['topic']);
 			$topic['closed'] = $_POST['closed'];
-			$_success = 'Modification enregistrée !';
+			$_success = ''.__('forums.post_close').'';
 		}
 		
 		if (!_GET('topic') && !_GP('pid') && !_GP('edit')) {
@@ -427,17 +427,17 @@ if (isset($forum)) echo '<li><a href="'.create_url('forums', $forum['id']).'">'.
 if (isset($topic)) echo '<li><a href="'.create_url('forums', ['topic'=>$topic['id']]).'"><strong><big>'.  html_encode($_crumbs[] = $topic['subject']) .'</big></strong></a></li>';
 if (isset($post))  echo '<li><a href="'.create_url('forums', ['pid'=>$post['id']]).'">Post #'.  $post['id'] .'</a></li>';
 if ($edit_mode)    echo '<li class="active">'. $mode . '</li>';
-elseif (_GET('search') == 'recent')  echo  '<li class="active">Messages récents</li>';
-elseif (_GET('search') == 'noreply') echo  '<li class="active">Discussions sans réponse</li>';
-elseif (_GET('search'))              echo  '<li class="active">Recherche</li>';
+elseif (_GET('search') == 'recent')  echo  '<li class="active">'.__('forums.recent').'</li>';
+elseif (_GET('search') == 'noreply') echo  '<li class="active">'.__('forums.noreply').'</li>';
+elseif (_GET('search'))              echo  '<li class="active">'.__('forums.search').'</li>';
 
 
 echo '<div class="pull-right">';
-	echo '&nbsp;&nbsp;<a href="'.create_url('forums', ['id'=>@$forum['id'],'search'=>'recent']).'" title="Messages récents"><i class="fa fa-comment-o"></i></a>';
-	echo '&nbsp;&nbsp;<a href="'.create_url('forums', ['id'=>@$forum['id'],'search'=>'noreply']).'" title="Sans réponse"><i class="fa fa-meh-o"></i></a>';
-	echo '&nbsp;&nbsp;<a href="'.create_url('forums', ['id'=>@$forum['id'],'search'=>'1']).'" title="Recherche"><i class="fa fa-search"></i></a>';
+	echo '&nbsp;&nbsp;<a href="'.create_url('forums', ['id'=>@$forum['id'],'search'=>'recent']).'" title="'.__('forums.recent').'"><i class="fa fa-comment-o"></i></a>';
+	echo '&nbsp;&nbsp;<a href="'.create_url('forums', ['id'=>@$forum['id'],'search'=>'noreply']).'" title="'.__('forums.noreply').'"><i class="fa fa-meh-o"></i></a>';
+	echo '&nbsp;&nbsp;<a href="'.create_url('forums', ['id'=>@$forum['id'],'search'=>'1']).'" title="'.__('forums.search').'"><i class="fa fa-search"></i></a>';
 	if (!has_permission())
-		echo '&nbsp;&nbsp;<a href="'.create_url('login', ['redir'=>$_SERVER['REQUEST_URI']]).'" title="Connexion"><i class="fa fa-user"></i></a>';
+		echo '&nbsp;&nbsp;<a href="'.create_url('login', ['redir'=>$_SERVER['REQUEST_URI']]).'" title="'.__('forums.connect').'"><i class="fa fa-user"></i></a>';
 echo '</div>';
 
 
@@ -464,29 +464,29 @@ echo '<div class="forum-main">';
 
 if ($edit_mode) {
 	if (!has_permission('forum.write', $forum['id'])) {
-		$_warning = 'Vous n\'avez pas la permission de poster un nouveau message. ';
+		$_warning = ''.__('forums.reply_perm').'';
 		if (!has_permission()) {
-			$_warning .= 'Peut-être aimeriez-vous vous <a href="'.create_url('login', ['redir'=>$_SERVER['REQUEST_URI']]).'">connecter</a> ?';
+			$_warning .= ''.__('forums.notice_login1').' <a href="'.create_url('login', ['redir'=>$_SERVER['REQUEST_URI']]).'">'.__('forums.notice_login2').'</a> ?';
 		}
 	} elseif(isset($topic) && $topic['closed']) {
-		$_warning = 'Cette discussion est close';
+		$_warning = ''.__('forums.topic_close').'';
 	}
 }
 elseif (isset($_GET['search'])) {
 	echo '<div class="panel panel-default">
-			<div class="panel-heading">Recherche</div>
+			<div class="panel-heading">'.__('forums.search').'</div>
 			<form method="get">
 			<input type="hidden" name="p" value="forums">
 			<div class="panel-body">
-				<div class="col-sm-8 control-label">Par phrase:<br>
+				<div class="col-sm-8 control-label">'.__('forums.search_sort_keywords').' :<br>
 					  <input type="text" class="form-control" name="text" value="' . html_encode(_GET('text')) . '">';
 
 	if ($forum) echo '<label><input type="checkbox" name="forum_only" value="'.$forum['id'].'" ' . (_GET('forum_only') ? 'checked':'') . '> Seulement dans <i>' . $forum['name'] . '</i></label>';
 
 	echo			'<br>
-					  <button type="submit" name="search" value="1" class="btn btn-sm btn-primary">Lancer la recherche</button>
+					  <button type="submit" name="search" value="1" class="btn btn-sm btn-primary">'.__('forums.search_sort_btn').'</button>
 					</div>
-					<div class="col-sm-4 control-label">Par auteur:<br>
+					<div class="col-sm-4 control-label">'.__('forums.search_sort_author').' :<br>
 					  <input type="text" class="form-control" data-autocomplete="userlist" name="poster" value="' . html_encode(_GET('poster')) . '">
 					</div>
 				</div>
@@ -562,7 +562,7 @@ elseif (isset($_GET['search'])) {
 				echo paginator($pptotal , $pn, 10, '/?'.implode('&', array_map(function (&$v, $k) { return $v = $k.'='.urlencode($v);}, $_GET, array_keys($_GET))).'&pn=');
 			}
 		} else {
-			$_notice = 'Aucun résultat !';
+			$_notice = ''.__('forums.search_nothing').'';
 		}
 	}
 }
@@ -571,7 +571,7 @@ elseif (isset($topic)) {
 	$topic_read[$topic['id']] = $topic['last_post'];
 
 	if ($topic['closed'])
-		echo '<div class="alert alert-warning">Cette discussion est close.</div>';
+		echo '<div class="alert alert-warning">'.__('forums.topic_close').'.</div>';
 
 
 	if ($forum_moderator || has_permission('mod.forum_topic_move')) {
@@ -585,7 +585,7 @@ elseif (isset($topic)) {
 				}
 				echo html_select('move-topic', $cats, $topic['forum_id']);
 			echo '</div>';
-			echo '<div class="col-md-3"><button class="btn btn-default" name="topic" value="' . $topic['id'] . '">Déplacer la discussion</button></div>';
+			echo '<div class="col-md-3"><button class="btn btn-default" name="topic" value="' . $topic['id'] . '">'.__('forums.topic_move').'</button></div>';
 		echo '</form></div></div>';
 	}
 
@@ -597,39 +597,39 @@ elseif (isset($topic)) {
 			echo	'<a href="'.create_url('forums', ['topic'=>$topic['id'],'compose'=>1]).'">Répondre</a> ';
 
 		if ($forum_moderator || has_permission('mod.forum_topic_close')) {
-			if ($topic['closed']) echo '<button class="btn btn-primary btn-xs" name="closed" value="0" title="Ouvrir"><i class="fa fa-unlock"></i></button> ';
-			else echo '<button class="btn btn-primary btn-xs" name="closed" value="1" title="Fermer"><i class="fa fa-lock"></i></button> ';
+			if ($topic['closed']) echo '<button class="btn btn-primary btn-xs" name="closed" value="0" title="'.__('forums.topic_btn_unlock').'"><i class="fa fa-unlock"></i></button> ';
+			else echo '<button class="btn btn-primary btn-xs" name="closed" value="1" title="'.__('forums.topic_btn_lock').'"><i class="fa fa-lock"></i></button> ';
 		}
 
 		if ($forum_moderator || has_permission('mod.forum_topic_stick')) {
-			if ($topic['sticky']) echo '<div class="btn-group"><button class="btn btn-info btn-xs active" name="sticky" value="0" title="Désépingler"><i class="fa fa-thumb-tack"></i></button></div> ';
-			else echo '<button class="btn btn-info btn-xs" name="sticky" value="1" title="Épingler"><i class="fa fa-thumb-tack"></i></button> ';
+			if ($topic['sticky']) echo '<div class="btn-group"><button class="btn btn-info btn-xs active" name="sticky" value="0" title="'.__('forums.topic_btn_unpin').'"><i class="fa fa-thumb-tack"></i></button></div> ';
+			else echo '<button class="btn btn-info btn-xs" name="sticky" value="1" title="'.__('forums.topic_btn_pin').'"><i class="fa fa-thumb-tack"></i></button> ';
 		}
 
 		if ($forum_moderator || has_permission('mod.forum_topic_redirect')) {
-			echo '<a class="btn btn-warning btn-xs" name="redirect-topic" href="'.create_url('forums', ['edit'=>$topic['first_post_id']]).'" title="Créer une redirection">'.
+			echo '<a class="btn btn-warning btn-xs" name="redirect-topic" href="'.create_url('forums', ['edit'=>$topic['first_post_id']]).'" title="'.__('forums.topic_btn_shortcut').'">'.
 				 '<i class="fa fa-external-link"></i></a> ';
 		}
 
 		if ($forum_moderator || has_permission('mod.forum_topic_move')) {
-			echo '<button type="button" class="btn btn-warning btn-xs" name="move-topic" value="'.$topic['id'].'" title="Déplacer la discussion" onclick="$(\'#move-topic-container\').toggle();">'.
+			echo '<button type="button" class="btn btn-warning btn-xs" name="move-topic" value="'.$topic['id'].'" title="'.__('forums.topic_btn_move').'" onclick="$(\'#move-topic-container\').toggle();">'.
 				 '<i class="fa fa-location-arrow "></i></button> ';
 		}
 
 		if ($forum_moderator || has_permission('mod.forum_topic_delete')) {
-			echo '<button class="btn btn-danger btn-xs" name="delete-topic" value="'.$topic['id'].'" title="Supprimer la discussion" onclick="return confirm(\'Supprimer la discussion et ses messages?\');">'.
+			echo '<button class="btn btn-danger btn-xs" name="delete-topic" value="'.$topic['id'].'" title="'.__('forums.topic_btn_delete').'" onclick="return confirm(\'Supprimer la discussion et ses messages?\');">'.
 				 '<i class="fa fa-times"></i></button> ';
 		}
 	echo '		</form></div>';
 	
 	if ($topic['redirect'])
-		echo'<i class="fa fa-location-arrow" title="Lien externe"></i> ';
+		echo'<i class="fa fa-location-arrow" title="'.__('forums.state_external').'"></i> ';
 	
 	if ($topic['closed'])
-		echo '<i class="fa fa-lock" title="Discussion close"></i> ';
+		echo '<i class="fa fa-lock" title="'.__('forums.state_closed').'"></i> ';
 	
 	if ($topic['sticky'])
-		echo'<i class="fa fa-thumb-tack" title="Discussion épingler"></i> ';
+		echo'<i class="fa fa-thumb-tack" title="'.__('forums.state_pinned').'"></i> ';
 
 	echo '		' . html_encode($topic['subject']);
 	echo '	</div>';
@@ -654,24 +654,24 @@ elseif (isset($topic)) {
 				echo '<span class="label label-primary label-usergroup">' . $post['gname'] . '</span>';
 
 				if ($post['ban_reason']) {
-					$reason = has_permission('mod.') ? html_encode($post['ban_reason']) : 'Ce membre est bannis.';
-					echo '​<span class="label label-danger" title="'.$reason.'">Bannis</span>';
+					$reason = has_permission('mod.') ? html_encode($post['ban_reason']) : ''.__('forums.state_member_banned').'';
+					echo '​<span class="label label-danger" title="'.$reason.'">'.__('forums.member_banned').'</span>';
 				}
 
 				echo '</p>';
 				echo '<dd class="user-meta">';
 
 				if($post['country'])
-					echo 'Pays: <span>'. $_countries[$post['country']].' &nbsp;<img style="position:relative;top:-1px;" src="' . get_asset('img/flags/'.strtolower($post['country']).'.png') . '"> '. '</span><br>';
+					echo ''.__('forums.member_country').': <span>'. $_countries[$post['country']].' &nbsp;<img style="position:relative;top:-1px;" src="' . get_asset('img/flags/'.strtolower($post['country']).'.png') . '"> '. '</span><br>';
 
 				if(isset($post['username'])) {
-					echo 'Inscrit: <span>' . date('Y-m-d', $post['registered']). '</span><br>';
-					echo 'Posts: <span>' . $post['num_posts']. '</span><br>';
+					echo ''.__('forums.member_register').' : <span>' . date('Y-m-d', $post['registered']). '</span><br>';
+					echo ''.__('forums.member_numpost').' : <span>' . $post['num_posts']. '</span><br>';
 				} else {
 					if ($post['poster_id']) {
-						echo 'Compte supprimé';
+						echo ''.__('forums.member_deleted').'';
 					} else {
-						echo 'Non inscrit<br>';
+						echo ''.__('forums.member_guest').'<br>';
 					}
 				}
 				echo '</dd>';
