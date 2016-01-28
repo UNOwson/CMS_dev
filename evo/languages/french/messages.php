@@ -234,13 +234,13 @@ return [
 
     'register.title'                    => 'Créer un nouveau compte',
     'register.closed'                   => 'Désolé, les inscriptions publiques sont closes.',
-    'register.field_username'           => 'Nom D\'Utilisateur',
-    'register.field_email'              => 'Adresse Émail',
-    'register.field_password'           => 'Mot de passe',
-    'register.field_passconfirm'        => 'Confirmation',
+    'register.field_username'           => 'Nom D\'Utilisateur : ',
+    'register.field_email'              => 'Adresse Émail : ',
+    'register.field_password'           => 'Mot de passe : ',
+    'register.field_passconfirm'        => 'Confirmation : ',
     'register.field_passconfirm_wrong'  => 'Les mots de passes ne sont pas identique',
-    'register.field_recruiter'          => 'Mon Parrain',
-    'register.field_avatar'             => 'Mon Avatar',
+    'register.field_recruiter'          => 'Mon Parrain : ',
+    'register.field_avatar'             => 'Mon Avatar : ',
     'register.checkbox_email'           => 'Cacher mon email aux autres membres',
     'register.checkbox_newsletter'      => 'Je désire recevoir les newletter',
     'register.field_invalid'            => 'Champ invalide',
@@ -254,6 +254,7 @@ return [
     'register.damn'                     => 'Quelque chose ne va pas !',
     'register.error'                    => 'La création de votre compte a échoué !',
     'register.mail_confirm'             => 'Vous devriez recevoir un email afin d\'activer votre compre.'
+    'register.mail_error'               => 'Erreur d\'envoi d'e-mail d'activation. S\'il vous plaît nous contacter ou réessayez plus tard !',
     'register.log'                      => 'Nouvelle enregistrement',
 
     'main.btn_connect'      => 'Se Connecter',

@@ -6,19 +6,19 @@ else
 	$raf = '';
 
 if (!has_permission('admin.') && (Site('open_registration') == 0 || (Site('open_registration') == 2 && !$raf))) {
-	return $_warning = 'Désolé'.__('register.closed').'';
+	return $_warning = __('register.closed');
 }
 
 $fields = [
 	'username' => [
-		'label' => ''.__('register.field_username').' : ',
+		'label' => __('register.field_username'),
 		'type' => 'text',
 		'value' => _POST('username'),
 		'validation' => PREG_USERNAME,
 		'required' => true,
 	],
 	'email' => [
-		'label' => ''.__('register.field_email').' : ',
+		'label' => __('register.field_email'),
 		'type' => 'text',
 		'value' => _POST('email'),
 		'validation' => PREG_EMAIL,
@@ -30,14 +30,14 @@ $fields = [
 		'validation' => PREG_DIGIT,
 		'fields' => [
 			'hide_email' => [
-				'label' => ' '.__('register.checkbox_email').'',
+				'label' => __('register.checkbox_email'),
 				'type' => 'checkbox',
 				'checked' => (!$_POST || isset($_POST['hide_email'])),
 				'value' => 1,
 				'validation' => PREG_DIGIT,
 			],
 			'newsletter' => [
-				'label' => ' '.__('register.checkbox_newsletter').'',
+				'label' => __('register.checkbox_newsletter'),
 				'type' => 'checkbox',
 				'checked' => (!$_POST || isset($_POST['newsletter'])),
 				'value' => 1,
@@ -46,25 +46,25 @@ $fields = [
 		],
 	],
 	'password' => [
-		'label' => ''.__('register.field_password').' : ',
+		'label' => __('register.field_password'),
 		'type' => 'password',
 		'value' => _POST('password'),
 		'validation' => PREG_USERNAME,
 		'required' => true,
 	],
 	'password_confirm' => [
-		'label' => ''.__('register.field_passconfirm').' : ',
+		'label' => __('register.field_passconfirm'),
 		'type' => 'password',
 		'value' => _POST('password_confirm'),
 	],
 	'raf' => [
-		'label' => ''.__('register.field_recruiter').' : ',
+		'label' => __('register.field_recruiter'),
 		'type' => 'text',
 		'value' => $raf,
 		'attributes' => 'disabled',
 	],
 	'avatar' => [
-		'label' => ''.__('register.field_avatar').' : ',
+		'label' => __('register.field_avatar'),
 		'type' => 'avatar',
 		'value' => _POST('avatar'),
 		'attributes' => 'disabled',
@@ -98,14 +98,14 @@ if ($_POST) {
 			(is_string($f['validation']) && !preg_match($f['validation'], $value))) // OR if not acceptable string
 			&& !($f['required'] !== true && $value === '') // AND if the parameter is not both empty and optional
 		) {
-			$_warning .= ''.__('register.field_invalid').' : '.$field.'<br>';
+			$_warning .= __('register.field_invalid').' : '.$field.'<br>';
 		} elseif ($f['required'] === true && $value === '') {
-			$_warning .= ''.__('register.field_require').' : '.$field.'<br>';
+			$_warning .= __('register.field_require').' : '.$field.'<br>';
 		}
 	}
 	
 	if ($ban = check_banlist($_POST)) {
-		$_warning .= ''.__('register.check_banlist').' : ' . html_encode($ban['reason']) .' <br>';
+		$_warning .= __('register.check_banlist').' : ' . html_encode($ban['reason']) .' <br>';
 	}
 	
 	$user_exists = Db::Get('select username FROM {users} WHERE username = ? or email = ?', $_POST['username'], $_POST['email']);
