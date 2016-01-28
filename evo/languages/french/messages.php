@@ -4,6 +4,8 @@ return [
 	'_.email'               => 'É-mail',
 	'_.rank'                => 'Rang',
 
+    '403.msg'               => 'Que faites-vous ici ?',
+
     'home.no_article'       => 'Rien à montrer',
 	
 	'user.page_title'       => '%user%\'s profile',
@@ -59,6 +61,14 @@ return [
     'mail.disc_title'       => 'Conversation',
     'mail.disc_users'       => 'participant',
     'mail.disc_reply'       => 'Répondre à ce message',
+    'mail.title_page'       => 'Messagerie',
+    'mail.del_ok'           => 'Message supprimé avec succès',
+    'mail.del_no'           => 'Aucun message supprimé !',
+    'mail.rest_ok'          => 'Message restauré avec succès',
+    'mail.rest_no'          => 'Aucun message restauré !',
+    'mail.sent_ok'          => 'Votre message a été envoyé avec succès !',
+    'mail.sent_no'          => 'Utilisateur introuvable !',
+    'mail.mess_disc'        => 'Message de',
 
 	'team.username'         => 'Pseudo',
 	'team.email'            => 'É-mail',
@@ -88,6 +98,12 @@ return [
     'friends.offline'       => 'Déconnecté',
     'friends.send_mess'     => 'Envoyer un message privé',
     'friends.remove'        => 'Retirer de ma liste d\'amis',
+    'friends.already'       => 'Vous êtes déjà ami !',
+    'friends.sent'          => 'Requête envoyé !',
+    'friends.not'           => 'Utilisateur introuvable !',
+    'friends.delete'        => 'Ami retiré avec succès !',
+    'friends.error'         => 'Demande introuvable !',
+    'friends.accept'        => 'Demande d\'ami accepté !',
 
 	'server.ping'           => 'Pinging server %server% <em>(replied in %seconds%s)</em>',
 	'server.no_reply'       => 'No reply',

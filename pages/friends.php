@@ -5,22 +5,22 @@ if (!empty($_POST['new_friend'])) {
 	$friend = Db::Get('select id, username, email from {users} where username = ? or email = ?', $_POST['new_friend'], $_POST['new_friend']);
 	if ($friend) {
 		if (Db::Get('select id from {friends} where u_id = ? and f_id = ?', $user_session['id'], $friend['id'])) {
-			$_warning = 'Vous êtes déjà amis!';
+			$_warning = ''.__('friends.already').'';
 		} else {
 			Db::Insert('friends', ['u_id' => $user_session['id'], 'f_id' => $friend['id'], 'state' => 0]);
 			sendmail($friend['email'], ucfirst($user_session['username']).' souhaiterait être votre ami!', "Bonjour {$friend['username']},\n\nVous avez reçu une demande d'amitié sur sur " . site('name') . "  de la part de {$user_session['username']}!\n\nConnectez-vous pour accepter ou refuser.");
-			$_success = 'Demande envoyée!';
+			$_success = ''.__('friends.sent').'';
 		}
 	} else {
-		$_warning = 'Utilisateur inconnu!';
+		$_warning = ''.__('friends.not').'';
 	}
 }
 elseif (isset($_POST['del_request'])) {
 	$req = Db::Exec("delete from {friends} where (u_id = {$user_session['id']} and f_id = ?) or (f_id = {$user_session['id']} and u_id = ?)", $_POST['del_request'], $_POST['del_request']);
 	if ($req >= 1) {
-		$_success = 'Demande supprimée!';
+		$_success = ''.__('friends.delete').'';
 	} else {
-		$_warning = 'Demande non trouvée!';
+		$_warning = ''.__('friends.error').'';
 	}
 }
 elseif (isset($_POST['accept_request'])) {
@@ -29,9 +29,9 @@ elseif (isset($_POST['accept_request'])) {
 		if ($u_id = Db::Get('select u_id from {friends} where id = ?', $_POST['accept_request'])) {
 			Db::Insert('friends', array('u_id'  => $user_session['id'], 'f_id'  => $u_id, 'state' => 1), true);
 		}
-		$_success = 'Demande acceptée!';
+		$_success = ''.__('friends.accept').'';
 	} else {
-		$_warning = 'Demande non trouvée!';
+		$_warning = ''.__('friends.error').'';
 	}	
 }
 

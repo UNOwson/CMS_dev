@@ -1,7 +1,7 @@
 <?php defined('EVO') or die('Que fais-tu là?');
 has_permission(null, true);
  
-	$_title = 'Messagerie';
+	$_title = ''.__('mail.title_page').'';
 	
 	$reply = $to = $mails = $highlight = 0;
 	$can_send = has_permission('send_pmess_friend') || has_permission('send_pmess_nofriend');
@@ -12,18 +12,18 @@ has_permission(null, true);
 	if (isset($_POST['del_email'])) {
 		if (Db::Exec('update {mailbox} set deleted_snd = 1 where id = ? AND s_id = ?', $_POST['del_email'], $user_session['id']) +
 			 Db::Exec('update {mailbox} set deleted_rcv = 1 where id = ? AND r_id = ?', $_POST['del_email'], $user_session['id']))
-			$_success = 'Message supprimé!';
+			$_success = ''.__('mail.del_ok').'';
 		else
-			$_warning = 'Aucun message supprimé!';
+			$_warning = ''.__('mail.del_no').'';
 	}
 	
 	/* Restorer un message */
 	if (isset($_POST['restore_email'])) {
 		if (Db::Exec('update {mailbox} set deleted_snd = 0 where id = ? AND s_id = ?', $_POST['restore_email'], $user_session['id']) +
 			 Db::Exec('update {mailbox} set deleted_rcv = 0 where id = ? AND r_id = ?', $_POST['restore_email'], $user_session['id']))
-			$_success = 'Message restauré!';
+			$_success = ''.__('mail.rest_ok').'';
 		else
-			$_warning = 'Aucun message restauré!';
+			$_warning = ''.__('mail.rest_no').'';
 	}
 
 	/* Envoyer un message */
@@ -38,11 +38,11 @@ has_permission(null, true);
 		}
 		
 		if ($highlight = SendMessage($to, $subject, $_POST['message'], $reply)) {
-			$_success = 'Votre message a été envoyé avec succès !';
+			$_success = ''.__('mail.sent_ok').'';
 			$_POST = array();
 			$_GET['id'] = 0;
 		} else {
-			$_warning = 'Utilisateur introuvable !';
+			$_warning = ''.__('mail.sent_no').'';
 			$tab_mail = true;
 		}
 	}
@@ -68,7 +68,7 @@ has_permission(null, true);
 		Db::Exec('UPDATE {mailbox} SET viewed = ? WHERE (id = ? or reply = ?) and r_id = ? and (viewed = 0 or viewed is null)', time(), $_GET['id'], $reply, $user_session['id']);
 		
 		if ($mails) {
-			$_title = 'Message de ' . $mails[0]['username'];
+			$_title = ''.__('mail.mess_disc').' ' . $mails[0]['username'];
 		}
 	} elseif (!empty($_GET['id'])) {
 		echo '<script>$(function() { window.location.hash = "mail"; });</script>';
