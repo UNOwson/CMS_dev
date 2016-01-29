@@ -2107,16 +2107,19 @@ function build_search_query($query, $columns = ['a-z0-9_-\.'])
 }
 
 
-function geoip_country_code($hostname)
-{
-	if (function_exists('geoip_country_code_by_name')) {
+if (function_exists('geoip_country_code_by_name')) {
+	function geoip_country_code($hostname)
+	{
 		return geoip_country_code_by_name($hostname);
-	} else {
+	}
+} else {
+	function geoip_country_code($hostname)
+	{
 		static $gi;
 		require_once __DIR__. '/libs/GeoIP/GeoIP.php';
 		if ($gi || $gi = geoip_open(__DIR__. '/libs/GeoIP/GeoIP.dat', GEOIP_COUNTRY_EDITION)) {
 			return geoip_country_code_by_addr($gi, $hostname);
 		}
+		return null;	
 	}
-	return null;
 }
