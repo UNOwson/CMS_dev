@@ -1,4 +1,4 @@
-<?php defined('EVO') or die(__('403.msg'));
+<?php defined('EVO') or die('Que fais-tu là?');
 
 $polls = Db::QueryAll('select * from {polls} order by poll_id desc');
 

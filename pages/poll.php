@@ -1,4 +1,4 @@
-<?php defined('EVO') or die(__('403.msg'));
+<?php defined('EVO') or die('Que fais-tu là?');
 
 $poll = Db::Get('select * from {polls} where poll_id = ?', _GP('id'));
 

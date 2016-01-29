@@ -1,4 +1,4 @@
-<?php defined('EVO') or die(__('403.msg'));
+<?php defined('EVO') or die('Que fais-tu là?');
 /**
  *  If the url rewriting is setup correctly this page should not be called on every hit.
  *  Only once per thumb size (we should probably limit as it's a security issue/DoS possibility).

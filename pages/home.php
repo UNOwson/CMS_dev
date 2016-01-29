@@ -1,4 +1,4 @@
-<?php defined('EVO') or die(__('403.msg'));
+<?php defined('EVO') or die('Que fais-tu là?');
 
 $num_art = (int) Db::Get('select count(*) from {pages} where `type` = "article" AND pub_rev > 0');
 

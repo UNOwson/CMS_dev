@@ -1,5 +1,5 @@
 <?php
-defined('EVO') or die(__('403.msg'));
+defined('EVO') or die('Que fais-tu là?');
 has_permission('user.view_uprofile', true);
 
 if (isset($_REQUEST['filter'])) {
