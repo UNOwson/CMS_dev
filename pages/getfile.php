@@ -9,6 +9,8 @@ if (_GET('path')) {
 	$param = fixpath(_GET('path'));
 } elseif (count($param = explode('/', _GET('id'), 2)) === 2) {
 	$sql = 'select * from {files} where id = ? and name = ?';
+} elseif (_GET('id', 1000) < 100) {
+	$sql = 'select * from {files} where id = ?';
 } else {
 	return $_warning = __('getfile.badlink');
 }

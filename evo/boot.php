@@ -15,7 +15,7 @@ define('EVO', 1);
 define('ROOT_DIR', realpath(__DIR__.'/..'));
 define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
 
-set_include_path(ROOT_DIR . '/evo/libs' .  PATH_SEPARATOR .  ROOT_DIR . '/evo' .  PATH_SEPARATOR .  ROOT_DIR . '/vendor');
+set_include_path(ROOT_DIR . '/evo/libs' .  PATH_SEPARATOR .  ROOT_DIR . '/evo' .  PATH_SEPARATOR);
 
 if (file_exists(ROOT_DIR.'/config.php')) {
 	require ROOT_DIR.'/config.php';

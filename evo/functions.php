@@ -139,15 +139,10 @@ function cookie_destroy()
 function check_banlist($visitor = null)
 {
 	global $user_session;
-	require_once __DIR__. '/libs/GeoIP/GeoIP.php';
 	$visitor = $visitor ?: $user_session;
 
 	if (!isset($_SESSION['country'])) {
-		if ($gi = geoip_open(__DIR__. '/libs/GeoIP/GeoIP.dat', GEOIP_COUNTRY_EDITION)) {
-			$_SESSION['country'] = geoip_country_code_by_addr($gi, $_SERVER['REMOTE_ADDR']);
-		} else {
-			$_SESSION['country'] = NULL;
-		}
+		$_SESSION['country'] = geoip_country_code($_SERVER['REMOTE_ADDR']);
 	}
 
 	if (rand(0, 3) === 1) {
@@ -2109,4 +2104,19 @@ function build_search_query($query, $columns = ['a-z0-9_-\.'])
 	}
 
 	return ['where' => implode($link, $where), 'args' => $args];
+}
+
+
+function geoip_country_code($hostname)
+{
+	if (function_exists('geoip_country_code_by_name')) {
+		return geoip_country_code_by_name($hostname);
+	} else {
+		static $gi;
+		require_once __DIR__. '/libs/GeoIP/GeoIP.php';
+		if ($gi || $gi = geoip_open(__DIR__. '/libs/GeoIP/GeoIP.dat', GEOIP_COUNTRY_EDITION)) {
+			return geoip_country_code_by_addr($gi, $hostname);
+		}
+	}
+	return null;
 }
