@@ -204,6 +204,9 @@ return [
     'profile.sn_website'    => 'URL de votre site internet',
     'profile.prez_textarea' => 'Présentez-vous !',
 
+    'getfile.notfound'      => 'Fichier introuvable !',
+    'getfile.badlink'       => 'Lien malformé',
+
     'contact.title1'            => 'Information du contact',
     'contact.title2'            => 'Votre message',
     'contact.user'              => 'Nom de compte',
@@ -253,7 +256,7 @@ return [
     'register.success_connect'          => 'Votre compte a été créé avec succès et vous pouvez maintenant vous y connecter !',
     'register.damn'                     => 'Quelque chose ne va pas !',
     'register.error'                    => 'La création de votre compte a échoué !',
-    'register.mail_confirm'             => 'Vous devriez recevoir un email afin d\'activer votre compre.'
+    'register.mail_confirm'             => 'Vous devriez recevoir un email afin d\'activer votre compre.',
     'register.mail_error'               => 'Erreur d\'envoi d'e-mail d'activation. S\'il vous plaît nous contacter ou réessayez plus tard !',
     'register.log'                      => 'Nouvelle enregistrement',
 

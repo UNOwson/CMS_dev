@@ -204,6 +204,9 @@ return [
     'profile.sn_website'    => 'My Website address',
     'profile.prez_textarea' => 'Introduce yourself !',
 
+    'getfile.notfound'      => 'File not found !',
+    'getfile.badlink'       => 'Bad link',
+
     'contact.title1'            => 'Contact informations',
     'contact.title2'            => 'Your message',
     'contact.user'              => 'Username',

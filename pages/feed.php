@@ -1,4 +1,4 @@
-<?php defined('EVO') or die(''.__('403.msg').'');
+<?php defined('EVO') or die(__('403.msg'));
 
 echo  '<?xml version="1.0" encoding="UTF-8"?>'.
 		'<?xml-stylesheet type="text/css" href="' . get_asset('css/style.css') . '" ?>'.

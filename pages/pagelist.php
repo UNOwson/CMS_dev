@@ -1,4 +1,4 @@
-<?php defined('EVO') or die('Que fais-tu là?');
+<?php defined('EVO') or die(__('403.msg'));
 
 $pages = Db::QueryAll('select r.*, p.* from {pages} as p
 					   join {pages_revs} as r on r.page_id = p.page_id and status="published"

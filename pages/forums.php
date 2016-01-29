@@ -15,7 +15,7 @@
 	  or at least documented!
  */
 
-defined('EVO') or die(''.__('403.msg').'');
+defined('EVO') or die(__('403.msg'));
 
 $_body_class = 'page-wide';
 

@@ -1,4 +1,4 @@
-<?php defined('EVO') or die('Que fais-tu là?');
+<?php defined('EVO') or die(__('403.msg'));
 
 if (isset($_REQUEST['raf']))
 	$raf = Db::Get('select username from {users} where raf_token = ?', $_REQUEST['raf']);

@@ -1,4 +1,4 @@
-<?php defined('EVO') or die('Que fais-tu là?');
+<?php defined('EVO') or die(__('403.msg'));
 has_permission('view_friendlist', true); 
 
 if (!empty($_POST['new_friend'])) {
@@ -12,15 +12,15 @@ if (!empty($_POST['new_friend'])) {
 			$_success = ''.__('friends.sent').'';
 		}
 	} else {
-		$_warning = ''.__('friends.not').'';
+		$_warning = __('friends.not');
 	}
 }
 elseif (isset($_POST['del_request'])) {
 	$req = Db::Exec("delete from {friends} where (u_id = {$user_session['id']} and f_id = ?) or (f_id = {$user_session['id']} and u_id = ?)", $_POST['del_request'], $_POST['del_request']);
 	if ($req >= 1) {
-		$_success = ''.__('friends.delete').'';
+		$_success = __('friends.delete');
 	} else {
-		$_warning = ''.__('friends.error').'';
+		$_warning = __('friends.error');
 	}
 }
 elseif (isset($_POST['accept_request'])) {
@@ -29,9 +29,9 @@ elseif (isset($_POST['accept_request'])) {
 		if ($u_id = Db::Get('select u_id from {friends} where id = ?', $_POST['accept_request'])) {
 			Db::Insert('friends', array('u_id'  => $user_session['id'], 'f_id'  => $u_id, 'state' => 1), true);
 		}
-		$_success = ''.__('friends.accept').'';
+		$_success = __('friends.accept');
 	} else {
-		$_warning = ''.__('friends.error').'';
+		$_warning = __('friends.error');
 	}	
 }
 

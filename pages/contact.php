@@ -1,4 +1,4 @@
-<?php defined('EVO') or die(''.__('403.msg').'');
+<?php defined('EVO') or die(__('403.msg'));
 
 $mail_status = 'form';
 

@@ -1,4 +1,4 @@
-<?php defined('EVO') or die('Que fais-tu là?');
+<?php defined('EVO') or die(__('403.msg'));
 /**
  *  If the url rewriting is setup correctly this page should not be called on every hit.
  *  Only once per thumb size (we should probably limit as it's a security issue/DoS possibility).
@@ -10,7 +10,7 @@ if (_GET('path')) {
 } elseif (count($param = explode('/', _GET('id'), 2)) === 2) {
 	$sql = 'select * from {files} where id = ? and name = ?';
 } else {
-	return $_warning = 'Lien malformé!';
+	return $_warning = __('getfile.badlink');
 }
 
 # Url ideas:
@@ -22,7 +22,7 @@ if (_GET('path')) {
 if ($file = Db::Get($sql, $param)) {
 
 	if (!file_exists(ROOT_DIR . $file['path'])) { // Better double check!
-		return $_warning = 'Fichier introuvable !';
+		return $_warning = __('getfile.notfound');
 	}
 	
 	$file['thumbs'] = @unserialize($file['thumbs']) ?: array();
@@ -66,5 +66,5 @@ if ($file = Db::Get($sql, $param)) {
 	}
 	exit;
 } else {
-	$_warning = 'Fichier introuvable !';
+	$_warning = __('getfile.notfound');
 }

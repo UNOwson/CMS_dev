@@ -1,4 +1,4 @@
-<?php defined('EVO') or die('Que fais-tu là?');
+<?php defined('EVO') or die(__('403.msg'));
 has_permission(null, true);
  
 	$_title = ''.__('mail.title_page').'';
