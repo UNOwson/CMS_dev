@@ -257,7 +257,7 @@ return [
     'register.damn'                     => 'Quelque chose ne va pas !',
     'register.error'                    => 'La création de votre compte a échoué !',
     'register.mail_confirm'             => 'Vous devriez recevoir un email afin d\'activer votre compre.',
-    'register.mail_error'               => 'Erreur d\'envoi d'e-mail d'activation. S\'il vous plaît nous contacter ou réessayez plus tard !',
+    'register.mail_error'               => 'Erreur d\'envoi d\'e-mail d\'activation. S\'il vous plaît nous contacter ou réessayez plus tard !',
     'register.log'                      => 'Nouvelle enregistrement',
 
     'main.btn_connect'      => 'Se Connecter',
