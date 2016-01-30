@@ -197,6 +197,7 @@ return [
     'tpagec.censor'         => 'Censor this comment',
     'tpagec.delete'         => 'Delete this comment',
     'tpagec.tou'            => 'This message was censured for violating our Terms of Use',
+    'tpagec.title_comments' => 'Comments',
     'tpagec.title_comment'  => 'Comment',
     'tpagec.area_compose'   => 'Compose your message ...',
     'tpagec.btn_send'       => 'Send',

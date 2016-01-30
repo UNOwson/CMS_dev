@@ -192,7 +192,16 @@ return [
     'tpagea.published'      => 'Publié par',
     'tpagea.view'           => 'Nombre de vu',
     'tpagea.knowing'        => 'En savoir plus',
-    
+
+    'tpagec.report'         => 'Signaler ce commentaire',
+    'tpagec.censor'         => 'Censurer ce commentaire',
+    'tpagec.delete'         => 'Supprimer ce commentaire',
+    'tpagec.tou'            => 'Ce message est censuré pour violation de nos Termes et Condition',
+    'tpagec.title_comments' => 'Commentaires',
+    'tpagec.title_comment'  => 'Commentaire',
+    'tpagec.area_compose'   => 'Composez votre message ...',
+    'tpagec.btn_send'       => 'Envoyer',
+
     'tpolls.name'           => 'Nom du sondage',
     'tpolls.end'            => 'Date de fin',
 	

@@ -1,7 +1,7 @@
 <a name="comments"></a>
 <div class="commentaires">
 	<?php if ($comments) { ?>
-		<legend><?= __('')?></legend>
+		<legend><?= __('tpagec.title_comments')?></legend>
 		<form method="post" action="<?=Site('url')?>/admin/?page=comments">
 
 		<?php foreach($comments as $comment) { ?>
