@@ -1,7 +1,7 @@
 <a name="comments"></a>
 <div class="commentaires">
 	<?php if ($comments) { ?>
-		<legend>Commentaires</legend>
+		<legend><?= __('')?></legend>
 		<form method="post" action="<?=Site('url')?>/admin/?page=comments">
 
 		<?php foreach($comments as $comment) { ?>
@@ -13,13 +13,13 @@
 							<small><a href="#msg<?=$comment['id']?>" style="color:inherit"><?=today($comment['posted'], 'H:i')?></a><br></small>
 							<div class="flag btn-group">
 							<?php if ($comment['state'] == 0) {?>
-								<button class="btn btn-xs btn-danger" onclick="return report(<?=$comment['id']?>);" title="Signaler ce commentaire"><i class="fa fa-flag"></i></button>
+								<button class="btn btn-xs btn-danger" onclick="return report(<?=$comment['id']?>);" title="<?= __('tpagec.report')?>"><i class="fa fa-flag"></i></button>
 							<?php } ?>
 							<?php if (has_permission('mod.comment_censure')) { ?>
-								<button class="btn btn-xs btn-warning" name="com_censure" onclick="return confirm('Sur?');" value="<?=$comment['id']?>" title="Censurer ce commentaire"><i class="fa fa-ban"></i></button>
+								<button class="btn btn-xs btn-warning" name="com_censure" onclick="return confirm('Sur?');" value="<?=$comment['id']?>" title="<?= __('tpagec.censor')?>"><i class="fa fa-ban"></i></button>
 							<?php } ?>
 							<?php if (has_permission('mod.comment_delete')) { ?>
-								<button class="btn btn-xs btn-danger" name="com_delete" onclick="return confirm('Sur?');" value="<?=$comment['id']?>" title="Supprimer ce commentaire"><i class="fa fa-times"></i></button>
+								<button class="btn btn-xs btn-danger" name="com_delete" onclick="return confirm('Sur?');" value="<?=$comment['id']?>" title="<?= __('tpagec.delete')?>"><i class="fa fa-times"></i></button>
 							<?php } ?>
 							</div>
 						</div>
@@ -34,7 +34,7 @@
 					</div>
 					<div class="comment">
 						<?php if($comment['state'] == 2) { ?>
-							<div style='text-align: center;' class='alert alert-danger'>Ce message a été censuré pour violation de nos conditions d'utilisation</div>
+							<div style='text-align: center;' class='alert alert-danger'><?= __('tpagec.tou')?>"></div>
 						<?php } else { ?>
 							<?=emoticons(nl2br(html_encode($comment['message'])))?>
 						<?php } ?>
@@ -48,10 +48,10 @@
 	<?php if ($can_post_comment) { ?>
 		<form method="post" action="#">
 		<?php if (has_permission()) { ?>
-			<legend>Commentaire</legend>
-			<textarea class="form-control" name="commentaire" placeholder="Composez votre message..." maxlength="1024" rows="3"></textarea>
+			<legend><?= __('tpagec.title_comment')?></legend>
+			<textarea class="form-control" name="commentaire" placeholder="<?= __('tpagec.area_compose')?>" maxlength="1024" rows="3"></textarea>
 			<div style="text-align:right;margin-top: 10px;">
-				<input class="btn btn-success" name="new_comment" type="submit" value="Envoyer">
+				<input class="btn btn-success" name="new_comment" type="submit" value="<?= __('tpagec.btn_send')?>">
 			</div>
 		<?php } else { ?>
 			<legend><a href="<?=create_url('login', ['redir' => $page['page_id']])?>">Connectez-vous</a> ou postez en tant qu'invité:</legend>

@@ -4,7 +4,9 @@ return [
 	'_.email'               => 'Email',
 	'_.rank'                => 'Rank',
 
-    '403.msg'               => 'What are you doing',
+    '403.login'             => 'You must be logged in to access this page !',
+    '403.access'            => 'You do not have access to that page or section of the web site !',
+    '403.attention'         => 'Attention !',
 
     'home.no_article'       => 'nothing to show',
 
@@ -80,6 +82,8 @@ return [
 	'raf.email'             => 'Email',
 	'raf.rank'              => 'Rank',
     'raf.field_link'        => 'Link',
+    'raf.online'            => 'Online',
+    'raf.offline'           => 'Offline',
 
     'friends.title'         => 'Send a friend request',
     'friends.method'        => 'Email or Username',
@@ -104,6 +108,16 @@ return [
     'friends.delete'        => 'Friend removed successfully !',
     'friends.error'         => 'Application not found !',
     'friends.accept'        => 'Friend request accepted !',
+    'friends.want_to_be'    => 'would like to be your friend !',
+    'friends.hello'         => 'Hello',
+    'friends.request'       => 'You received a friend request on',
+
+    'gallery.in_gall'       => 'Insert to gallery',
+    'gallery.in_file'       => 'Insert file',
+    'gallery.in_mini'       => 'Insert thumbnails',
+    'gallery.btn_upload'    => 'Upload',
+    'gallery.btn_delete'    => 'Delete',
+    'gallery.btn_cancel'    => 'Cancel',
 
     'forums.edit_post'          => 'This post does not exist.',
     'forums.edit_disc'          => 'This discussion does not exist.',
@@ -174,6 +188,21 @@ return [
 	
 	'server.ping'           => 'Pinging server %server% <em>(replied in %seconds%s)</em>',
 	'server.no_reply'       => 'No reply',
+
+    'tpagea.published'      => 'published by',
+    'tpagea.view'           => 'Number of views',
+    'tpagea.knowing'        => 'Read more',
+
+    'tpagec.report'         => 'Report this comment',
+    'tpagec.censor'         => 'Censor this comment',
+    'tpagec.delete'         => 'Delete this comment',
+    'tpagec.tou'            => 'This message was censured for violating our Terms of Use',
+    'tpagec.title_comment'  => 'Comment',
+    'tpagec.area_compose'   => 'Compose your message ...',
+    'tpagec.btn_send'       => 'Send',
+
+    'tpolls.name'           => 'Survey Name',
+    'tpolls.end'            => 'End Date',
 	
     'profile.title'         => 'Edit my profil :',
     'profile.sn_title'      => 'Social Networks',
@@ -260,7 +289,7 @@ return [
     'register.mail_error'               => 'Error sending email activation. Please contact us or try again later !',
     'register.log'                      => 'A new registration',
 
-    'main.btn_connect'      => 'Connect',
+    'main.btn_login'        => 'Log in',
     'main.btn_create'       => 'Create new account',
     'main.link_fb'          => 'Our FB Page',
     'main.link_tw'          => 'Our Tweeter Page',

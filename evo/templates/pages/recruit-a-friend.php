@@ -27,7 +27,7 @@
 						foreach($users as $data)
 							{
 							echo "<tr style='font-size: 13px;'>";
-								echo '<td><a class="ico-' . ($data['activity'] > time() - 120 ? 'online" title="En Ligne"' : 'offline" title="Hors Ligne"') . '></a></td>';
+								echo '<td><a class="ico-' . ($data['activity'] > time() - 120 ? 'online" title="'.__('raf.online').'"' : 'offline" title="'.__('raf.offline').'"') . '></a></td>';
 								echo "<td>".html_encode($data['username'])."</td>";
 								echo "<td>".html_encode($data['email'])."</td>";
 								echo "<td><span style='color:{$data['color']};'>".$data['gname']."</span></td>";

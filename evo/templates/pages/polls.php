@@ -2,8 +2,8 @@
 	<thead>
         <tr>
 			<th></th>
-          	<th>Nom du sondage</th>
-          	<th>Date de fin</th>
+          	<th><?= __('tpolls.name')?></th>
+          	<th><?= __('tpolls.end')?></th>
         	<th></th>
     	</tr>
     </thead>

@@ -4,7 +4,9 @@ return [
 	'_.email'               => 'É-mail',
 	'_.rank'                => 'Rang',
 
-    '403.msg'               => 'Que faites-vous ici ?',
+    '403.login'             => 'Vous devez être connecté pour avoir accès à cette page !',
+    '403.access'            => 'Vous n\'avez pas accès à cette page ou section du site web !',
+    '403.attention'         => 'Attention !',
 
     'home.no_article'       => 'Rien à montrer',
 	
@@ -80,6 +82,8 @@ return [
 	'raf.email'             => 'É-mail',
 	'raf.rank'              => 'Rang',
     'raf.field_link'        => 'Lien',
+    'raf.online'            => 'En Ligne',
+    'raf.offline'           => 'Hors Ligne',
 
     'friends.title'         => 'Envoyer une demande d\'ami',
     'friends.method'        => 'Email ou Utilisateur',
@@ -104,6 +108,16 @@ return [
     'friends.delete'        => 'Ami retiré avec succès !',
     'friends.error'         => 'Demande introuvable !',
     'friends.accept'        => 'Demande d\'ami accepté !',
+    'friends.want_to_be'    => 'aimerait être votre ami !',
+    'friends.hello'         => 'Bonjour',
+    'friends.request'       => 'Vous avez reçu une demande d\'amitié sur',
+
+    'gallery.in_gall'       => 'Ajouter à la gallerie',
+    'gallery.in_file'       => 'Insérer un fichier',
+    'gallery.in_mini'       => 'Insérer une miniature',
+    'gallery.btn_upload'    => 'Transferer',
+    'gallery.btn_delete'    => 'Supprimer',
+    'gallery.btn_cancel'    => 'Annuler',
 
     'forums.edit_post'          => 'Ce post n\'existe pas.',
     'forums.edit_disc'          => 'Cette discussion n\'existe pas.',
@@ -174,6 +188,13 @@ return [
 
 	'server.ping'           => 'Pinging server %server% <em>(replied in %seconds%s)</em>',
 	'server.no_reply'       => 'No reply',
+
+    'tpagea.published'      => 'Publié par',
+    'tpagea.view'           => 'Nombre de vu',
+    'tpagea.knowing'        => 'En savoir plus',
+    
+    'tpolls.name'           => 'Nom du sondage',
+    'tpolls.end'            => 'Date de fin',
 	
     'profile.title'         => 'Editer mon profil :',
     'profile.sn_title'      => 'Les Réseaux sociaux',
@@ -260,8 +281,8 @@ return [
     'register.mail_error'               => 'Erreur d\'envoi d\'e-mail d\'activation. S\'il vous plaît nous contacter ou réessayez plus tard !',
     'register.log'                      => 'Nouvelle enregistrement',
 
-    'main.btn_connect'      => 'Se Connecter',
-    'main.btn_create'       => 'Créer un nouveau compte',
+    'main.btn_login'        => 'Se Connecter',
+    'main.btn_create'       => 'Créer un compte',
     'main.link_fb'          => 'Notre page Facebook',
     'main.link_tw'          => 'Notre Page Tweeter',
     'main.link_yt'          => 'Notre chaîne Youtube',

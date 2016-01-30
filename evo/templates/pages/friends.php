@@ -23,7 +23,7 @@
 							'<td><a class="ico-' . ($friend['activity'] > time() - 120 ? 'online" title="'.__('friends.online').'"' : 'offline" title="'.__('friends.offline').'"') . '></a></td>'.
 							'<td style="min-width: 25%;"><a href="' . create_url('user', $friend['id']) . '">' . $friend['username'] . '</a></td>'.
 							'<td style="min-width: 30%;">'.
-							($friend['hide_email'] > 0 ? "'.__('friends.pmail').'" : $friend['email']).
+							($friend['hide_email'] > 0 ? "".__('friends.pmail')."" : $friend['email']).
 							'</td>'.
 							'<td style="min-width:25%;color:' . $friend['gcolor'] . '">' . $friend['gname'] . '</td>'.
 							'<td class="text-right">'.
@@ -48,7 +48,7 @@
 							'<td><a class="ico-' . ($friend['activity'] > time() - 120 ? 'online" title="'.__('friends.online').'"' : 'offline" title="'.__('friends.offline').'"') . '></a></td>'.
 							'<td style="min-width: 25%;"><a href="' . create_url('user', $friend['id']) . '">' . $friend['username'] . '</a></td>'.
 								'<td style="min-width: 30%;">'.
-							($friend['hide_email'] ? "'.__('friends.pmail').'" : $friend['email']).
+							($friend['hide_email'] ? ''.__('friends.pmail').'' : $friend['email']).
 							'</td>'.
 							'<td style="min-width:25%;color:' . $friend['gcolor'] . '">' . $friend['gname'] . '</td>'.
 							'<td class="text-right">'.

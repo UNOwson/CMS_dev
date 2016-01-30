@@ -15,7 +15,7 @@
 	  or at least documented!
  */
 
-<?php defined('EVO') or die('Que fais-tu là?');
+defined('EVO') or die('Que fais-tu là?');
 
 $_body_class = 'page-wide';
 

@@ -54,12 +54,12 @@ $files = Db::QueryAll('select f.*, u.username from {files} as f join {users} as 
 	<button id="search" class="btn btn-default"><i class="fa fa-search" style="font-size: 14px;"></i></button>
 </div>
 <div class="pull-right form-inline gallery-controls">
-	<button id="insertgal" class="btn btn-default hide">Insérer la gallerie</button>
-	<button id="insertfile" class="btn btn-default hide">Insérer un fichier</button>
-	<button id="insertthumb" class="btn btn-default hide">Insérer une miniature</button>
-	<button id="uploadfile" class="btn btn-info"><i class="fa fa-upload"></i> Upload</button>
-	<button id="deletefiles" class="btn  btn-danger hide"><i class="fa fa-times"></i> Supprimer</button>
-	<button id="cancelfancy" class="btn  btn-danger">Annuler</button>
+	<button id="insertgal" class="btn btn-default hide"><?= __('gallery.in_gall') ?></button>
+	<button id="insertfile" class="btn btn-default hide"><?= __('gallery.in_file') ?></button>
+	<button id="insertthumb" class="btn btn-default hide"><?= __('gallery.in_mini') ?></button>
+	<button id="uploadfile" class="btn btn-info"><i class="fa fa-upload"></i> <?= __('gallery.btn_upload') ?></button>
+	<button id="deletefiles" class="btn  btn-danger hide"><i class="fa fa-times"></i> <?= __('gallery.btn_delete') ?></button>
+	<button id="cancelfancy" class="btn  btn-danger"><?= __('gallery.btn_cancel') ?></button>
 	<select id="gallery-thumbsize" class="form-control">
 		<option value="150x150">Cropped Small (150px)</option>
 		<option value="480x480">Cropped Medium (480px)</option>

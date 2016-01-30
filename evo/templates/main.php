@@ -31,8 +31,8 @@
 			<?php } else { ?>
 				<div class="text-center">
 					<div class="btn-group">
-						<a href="<?= create_url('login') ?>" class="btn btn-primary"><i class="fa fa-user"></i>  Me Connecter</a> 
-						<a href="<?= create_url('register') ?>" class="btn btn-success"><i class="fa fa-pencil"></i>  Créer un compte</a>
+						<a href="<?= create_url('login') ?>" class="btn btn-primary"><i class="fa fa-user"></i>  <?= __('main.btn_login'); ?></a> 
+						<a href="<?= create_url('register') ?>" class="btn btn-success"><i class="fa fa-pencil"></i>  <?= __('main.btn_create'); ?></a>
 					</div>
 				</div>
 			<?php } ?>
