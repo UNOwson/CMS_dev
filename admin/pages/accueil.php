@@ -19,40 +19,36 @@
         <h3 class="panel-title">Informations Généraux</h3>
       </div>
       <div class="panel-body">
-        <div id="charts">
-          <div id="chart" class="mysql">
+        <ul id="charts">
+          <li id="chart" class="mysql">
             <p class="info"><?php echo $dbversion; ?></p>
             <p class="title"><strong>MySQL</strong></p>
-          </div>
-          <div id="chart" class="php">
-            <p class="info"><?php echo phpversion(); ?></p>
+          </li>
+          <li id="chart" class="php">
+            <p class="info"><?php echo $phpversion; ?></p>
             <p class="title"><strong>PhP</strong></p>
-          </div>
-          <div id="chart" class="version">
+          </li>
+          <li id="chart" class="version">
             <p class="info"><?php echo EVO_VERSION ?></p>
             <p class="title"><strong>Version CMS</strong></p>
-          </div>
-          <div id="chart" class="build">
+          </li>
+          <li id="chart" class="build">
             <p class="info">#<?php echo EVO_REVISION ?></p>
             <p class="title"><strong>Build CMS</strong></p>
-          </div>
-          <div id="chart" class="dbv">
+          </li>
+          <li id="chart" class="dbv">
             <p class="info">#<?php echo DATABASE_VERSION ?></p>
             <p class="title"><strong>Rev. DB</strong></p>
-          </div>
-          <div id="chart" class="os">
+          </li>
+          <li id="chart" class="os">
             <p class="info" style="margin: 10px 0px 5px;"><?php echo $os_info[$os_name]; ?></p>
             <p class="title"><strong>OS</strong></p>
-          </div>
-          <div id="chart" class="members">
+          </li>
+          <li id="chart" class="members">
             <p class="info"><?php echo Db::Get('select count(*) from {users}') ?></p>
             <p class="title"><strong>Membres</strong></p>
-          </div>
-          <div id="chart" class="visitors">
-            <p class="info"><?php  $hits = file_get_contents("./hits.txt"); $hits = $hits + 1; $handle = fopen("./hits.txt", "w"); fwrite($handle, $hits); fclose($handle); print $hits ?></p>
-            <p class="title"><strong>Visiteurs</strong></p>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="panel panel-default">
@@ -81,9 +77,8 @@
             <ul>
               <li><strong>Nombre de membre :</strong> <?php echo Db::Get('select count(*) from {users}') ?></li>
               <li><strong>Nombre de banni :</strong> <?php echo Db::Get('select count(*) from {banlist}') ?></li>
-              <li><strong>Membre connecté :</strong> N/D</li>
-              <li><strong>Nombre de visiteur :</strong> <?php print $hits ?></li>
-              <li><strong>Dernier inscript :</strong> Dark_fire_angel</li>
+              <li><strong>Membre connecté :</strong> Non Disponible</li>
+              <li><strong>Dernier inscript :</strong> Non Disponible</li>
             </ul>
           </div>
           <div class="squota">

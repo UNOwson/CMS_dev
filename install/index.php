@@ -574,18 +574,21 @@ switch($cur_step) {
 <html>
 	<head>
 	<meta charset="utf-8">
-	<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 	<script src="../assets/js/components.js"></script>
 	<style type="text/css">
 		html { height: 100%; }
-		body { font-family: 'Century Gothic', sans-serif; background: #6fa5d0; background-image: url(img/bg.jpg);  background-size:100%; }
+		body { font-family: 'Ubuntu', sans-serif; background: #6fa5d0; background-image: url(img/bg.jpg);  background-size:100%; }
 		#content { width:800px; padding:10px; margin:0 auto; border: 1px solid rgb(223, 223, 223); border-radius: 5px; margin-top: 10px; background-image: url('data:image/png;base64,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');}
 		.logo { width:800px; margin: 0 auto; margin-top: 20px; }
 		.logo img { width:225px;}
 		.main-titre { text-align: right; font-size: 22pt; margin-top: 10px; font-weight: 100; }
 		.rights { text-align: right; font-size: 11px; color: gray; }
 		.version { text-align: left; font-size: 11px; color: gray; }
+        .form-group {margin-bottom: 0px;}
 		.jumbotron { margin-bottom: 10px; border: 1px solid rgb(223, 223, 223); padding: 30px; color: inherit; background-color: #ffffff; }
+        .jumbotron p {margin-bottom: 15px;font-size: 14px;font-weight: 200;}
 		.avancement { height: 500px; border-right: 1px solid rgb(223, 223, 223); padding-top: 30px; }
 		.avancement p { font-size: 10pt; font-weight: 400 !important; }
 		.avancement .actif { font-weight: 600 !important; font-size: 11pt; }
@@ -644,7 +647,7 @@ switch($cur_step) {
 						<form class="form-horizontal" method="post" autocomplete="off" id="form-content">
 <?php if ($cur_step == 0): ?>
 			<p>Processus d'installation de Evo-CMS!</p>
-			<h5>Evo-CMS a besoin de certain composants pour fonctionner correctement. Nous allons maintenant vérifier si tout est en autre après quoi vous pourrez débuter l'installation !</h5>
+			<h5>Evo-CMS a besoin de certains composants pour fonctionner correctement. Nous allons maintenant vérifier si tout est en ordre après quoi vous pourrez débuter l'installation !</h5></br>
 			<legend><small>Vérification des éléments requis</small></legend>
 			<?php 
 			echo '<div class="requis_align">';
@@ -663,7 +666,7 @@ switch($cur_step) {
 			<legend>License d'utilisation</legend>
 				<strong>Evo-CMS : A Small Content Management System</strong><br>
 				<br>
-				Copyright (c) 2014, Alex Duchesne &lt;alex@alexou.net&gt;, Yan Bourgeois &lt;dev@evolution-network.ca&gt;<br>
+				Copyright (c) 2014, Alex Duchesne &lt;alex@alexou.net&gt;</br> Yan Bourgeois &lt;dev@evolution-network.ca&gt;<br>
 				<br>
 				Permission is hereby granted, free of charge, to any person obtaining<br>
 				a copy of this software and associated documentation files (the<br>
@@ -687,7 +690,7 @@ switch($cur_step) {
 				</small>
 <?php elseif ($cur_step == 2): ?>
 			<legend>Informations SQL</legend>
-			<p>Entrez ci-dessous les détails de connexion à votre base de données. Si vous ne les connaissez pas avec certiture, contactez votre hébergeur.</p>
+			<p style="font-size: 14px">Entrez ci-dessous les détails de connexion à votre base de données.</br>Si vous ne les connaissez pas avec certiture, contactez votre hébergeur.</p></br>
 				<div class="sqlite form-group bs-callout bs-callout-danger">
 					Le fichier sqlite3 ne doit pas être accessible publiquement. Si vous utiliser un serveur de type apache, un nom commençant par .ht. devrait faire l'affaire. Autrement référéz vous à votre serveur ou placer la base en dehors de votre webroot (chemin absolu).
 				</div>
@@ -757,7 +760,7 @@ switch($cur_step) {
 			?>
 			<div>
 				<legend>Configuration</legend>
-				<p>Merci de fournir les informations suivantes. Ne vous inquiétez pas, vous pourrez les modifier plus tard.</p>
+				<p style="font-size: 14px">Merci de fournir les informations suivantes. Ne vous inquiétez pas, vous pourrez les modifier plus tard.</p>
 					<div class="form-group"  data-toggle="tooltip" title="Quel nom possèdera votre site ?">
 						<label for="sitename" class="col-sm-3 control-label">Nom du site</label>
 						<div class="col-sm-9">
@@ -801,7 +804,7 @@ switch($cur_step) {
 				</div>
 <?php elseif ($cur_step == 4): ?>
 				<legend>Installation en cours...</legend>
-				<p>L'installation est présentement en cours. Si vous rencontrez des bugs, merci de nous le faire savoir en allant sur <a href="http://blog.evolution-network.ca/">notre site</a>.</p>
+				<p style="font-size: 14px">L'installation est présentement en cours. Si vous rencontrez des bugs, merci de nous le faire savoir en allant sur <a href="http://blog.evolution-network.ca/">notre site</a>.</p>
 
 			<?php if ($failed) { ?>
 				<div class="bs-callout bs-callout-danger">
@@ -811,10 +814,11 @@ switch($cur_step) {
 			<?php } elseif ($done) { ?>
 				<div class="bs-callout bs-callout-success">
 					<h4>Félicitation, c'est terminé !</h4>
-					<p>Votre CMS est maintenant prêt à être utilisé.</p>
-					<p>Merci d'utiliser Evo-CMS. Nous espérons que cette expérience vous plaira !</p>
-					<p style="color:#B94A48;">Nous vous suggérons de supprimer le dossier "install" pour plus de sécurité.</p>
+					<p style="font-size: 14px">Votre CMS est maintenant prêt à être utilisé.</p>
+					<p style="font-size: 14px">Merci d'utiliser Evo-CMS. Nous espérons que cette expérience vous plaira !</p>
+					<p style="color:#B94A48;font-size: 14px"><strong>Nous vous suggérons de supprimer le dossier "install" pour plus de sécurité.</strong></p>
 				</div>
+                </br>
 				<div class="form-group">
 					<label class="col-sm-5 control-label">Url de votre site : </label>
 					<div class="col-sm-7">
@@ -842,11 +846,8 @@ switch($cur_step) {
 				<div class="text-center">
 					<a href="<?= htmlentities($_POST['url'].'/admin', ENT_COMPAT, 'UTF-8') ?>" class="btn btn-success">Terminer</a>
 				</div>
-				<div>&nbsp;</div>
-
 			<?php } ?>
 <?php endif; ?>
-							<br>
 							<p class="navbtn text-center">
 							<?php
 								if (!isset($hide_nav)) {
