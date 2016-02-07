@@ -24,7 +24,7 @@ function post_e($key, $default = null) {
 }
 
 $cur_step = isset($_POST['step']) ? (int)$_POST['step'] : 0;
-$steps = array('Préface', 'License', 'Bienvenue', 'Informations SQL', 'Configuration', 'Terminé');
+$steps = array('Bienvenue', 'License', 'Vérifications', 'Informations SQL', 'Configuration', 'Terminé');
 $next_step = $cur_step;
 $payload = isset($_POST['payload']) ? $_POST['payload'] : '';
 $db_types = array();
@@ -578,10 +578,11 @@ switch($cur_step) {
 	<head>
 	<meta charset="utf-8">
 	<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<script src="../assets/js/components.js"></script>
 	<style type="text/css">
 		html { height: 100%; }
-		body { font-family: 'Century Gothic', sans-serif; background: #6fa5d0; background-image: url(img/alpha.jpg);  background-size:100%; }
+		body { font-family: 'Century Gothic', sans-serif; background: #6fa5d0; background-image: url(img/bg.jpg);  background-size:100%; }
 		#content { width:800px; padding:10px; margin:0 auto; border: 1px solid rgb(223, 223, 223); border-radius: 5px; margin-top: 10px; background-image: url('data:image/png;base64,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');}
 		.logo { width:800px; margin: 0 auto; margin-top: 20px; }
 		.logo img { width:225px;}
@@ -605,6 +606,8 @@ switch($cur_step) {
 		.bs-callout p:last-child { margin-bottom: 0; }
 		.bs-callout-danger { background-color: #fdf7f7; border-color: #d9534f; }
 		.bs-callout-success { background-color: #fdf7f7; border-color: #67B823; }
+        .bs-callout-info { border-left-color: #5bc0de; }
+        .bs-callout-info h4 { color: #5bc0de; }
 	</style>
 	</head>
 	<script>
@@ -646,7 +649,8 @@ switch($cur_step) {
 						?>
 						<form class="form-horizontal" method="post" autocomplete="off" id="form-content">
 <?php if ($cur_step == 0): ?>
-			<h2>Veuillez choisir votre langue<br>Please choose your language</h2>
+            </br>
+			<legend>Veuillez choisir votre langue</legend>
 			<div class="form-group">
 				<div class="col-sm-12">
 					<select class="form-control" id="language" name="language">
@@ -655,6 +659,10 @@ switch($cur_step) {
 					</select>
 				</div>
 			</div>
+            </br>
+            <div class="bs-callout bs-callout-info">
+              <h4>Bon à savoir !</h4> Le choix de votre langue d'affichage pourra être changé au besoin via la panneau d'administration du CMS.
+            </div>
 <?php elseif ($cur_step == 1): ?>
 			<legend>License d'utilisation</legend>
 				<strong>Evo-CMS : A Small Content Management System</strong><br>
@@ -682,9 +690,8 @@ switch($cur_step) {
 				WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br>
 				</small>
 <?php elseif ($cur_step == 2): ?>
-			<h2>Bienvenue !</h2>
-			<p>Bienvenue dans le processus d'installation de Evo-CMS!</p>
-			<p>Evo-CMS a besoin de certain composants pour fonctionner correctement. Nous allons maintenant vérifier si tout est en ordre après quoi vous pourrez débuter l'installation !</p>
+			<legend>Processus d'installation de Evo-CMS!</legend>
+			<h5>Evo-CMS a besoin de certains composants pour fonctionner correctement. Nous allons maintenant vérifier si tout est en ordre après quoi vous pourrez débuter l'installation !</h5>
 			<legend><small>Vérification des éléments requis</small></legend>
 			<?php
 			echo '<div class="requis_align">';
@@ -692,9 +699,9 @@ switch($cur_step) {
 				echo '<div class="row requis">'.
 					'<div class="col-md-9 info">' . htmlentities($check[0], ENT_COMPAT, 'UTF-8') . '</div>';		
 					if (!$check[1]) {
-						echo '<div class="col-md-3 error"><i class="glyphicon glyphicon-remove"></i> Erreur</div>';
+						echo '<div class="col-md-3 error"><i class="fa fa-exclamation"></i> Erreur</div>';
 					} else {
-						echo '<div class="col-md-3 ok"><i class="glyphicon glyphicon-ok"></i> Ok</div>';
+						echo '<div class="col-md-3 ok"><i class="fa fa-check"></i> OK</div>';
 					}
 				echo '</div>';
 			}
@@ -702,7 +709,8 @@ switch($cur_step) {
 			?>
 <?php elseif ($cur_step == 3): ?>
 			<legend>Informations SQL</legend>
-			<p>Entrez ci-dessous les détails de connexion à votre base de données. Si vous ne les connaissez pas avec certiture, contactez votre hébergeur.</p>
+			<h5>Entrez ci-dessous les détails de connexion à votre base de données. Si vous ne les connaissez pas avec certiture, contactez votre hébergeur.</h5>
+                </br>
 				<div class="sqlite form-group bs-callout bs-callout-danger">
 					Le fichier sqlite3 ne doit pas être accessible publiquement. Si vous utiliser un serveur de type apache, un nom commençant par .ht. devrait faire l'affaire. Autrement référéz vous à votre serveur ou placer la base en dehors de votre webroot (chemin absolu).
 				</div>
@@ -731,27 +739,31 @@ switch($cur_step) {
 				</div>
 				<div class="mysql form-group" data-toggle="tooltip" title="Host ou se trouve la DB.">
 					<label for="host" class="col-sm-4 control-label">Hôte</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="host" name="db_host" value="<?= post_e('db_host', 'localhost') ?>">
-					</div>
+                    <div class="col-sm-5 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-server"></i></div>
+                        <input type="text" class="form-control" id="host" name="db_host" value="<?= post_e('db_host', 'localhost') ?>">
+                    </div>
 				</div>
 				<div class="sqlite mysql form-group" data-toggle="tooltip" title="Nom de fichier sqlite3 ou nom de base mysql.">
 					<label for="dbname" class="col-sm-4 control-label" >Nom de la base</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="dbname" name="db_name" value="<?= post_e('db_name') ?>">
-					</div>
+                    <div class="col-sm-5 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-database"></i></div>
+                        <input type="text" class="form-control" id="dbname" name="db_name" value="<?= post_e('db_name') ?>">
+                    </div>
 				</div>
 				<div class="mysql form-group" data-toggle="tooltip" title="Votre identifiant MySQL.">
 					<label for="username" class="col-sm-4 control-label">Nom d'utilisateur</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="username" name="db_user" value="<?= post_e('db_user') ?>">
-					</div>
+                    <div class="col-sm-5 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                        <input type="text" class="form-control" id="username" name="db_user" value="<?= post_e('db_user') ?>">
+                    </div>
 				</div>
 				<div class="mysql form-group" data-toggle="tooltip" title="Votre mot de passe MySQL.">
 					<label for="password" class="col-sm-4 control-label">Mot de passe</label>
-					<div class="col-sm-6">
-						<input type="password" class="form-control" id="password" name="db_pass" value="<?= post_e('db_pass') ?>">
-					</div>
+                    <div class="col-sm-5 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                        <input type="password" class="form-control" id="password" name="db_pass" value="<?= post_e('db_pass') ?>">
+                    </div>
 				</div>
 			<div class="sqlite mysql form-group" data-toggle="tooltip" title="Si vous voulez installer plusieurs blogs Evo-CMS dans une même base de données, modifiez ce champ.">
 				<label for="inputPassword3" class="col-sm-4 control-label">Prefixe</label>
