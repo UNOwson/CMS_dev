@@ -151,7 +151,9 @@ function check_banlist($visitor = null)
 			Db::Exec('delete from {banlist} where id = ?', $ban['id']);
 		}
 	}
-
+	
+	$visitor = $visitor + ['group_id' => 4, 'email' => '', 'username' => ''];
+	
 	if ($visitor['group_id'] == 1) {
 		return null;
 	}

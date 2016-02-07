@@ -77,8 +77,8 @@
             <ul>
               <li><strong>Nombre de membre :</strong> <?php echo Db::Get('select count(*) from {users}') ?></li>
               <li><strong>Nombre de banni :</strong> <?php echo Db::Get('select count(*) from {banlist}') ?></li>
-              <li><strong>Membre connecté :</strong> Non Disponible</li>
-              <li><strong>Dernier inscript :</strong> Non Disponible</li>
+              <li><strong>Membre connecté :</strong> <?= Db::Get('select count(*) from {users} WHERE activity > '.(time()-90)); ?></li>
+              <li><strong>Dernier inscript :</strong> <?= Db::Get('select username from {users} order by id desc limit 1'); ?></li>
             </ul>
           </div>
           <div class="squota">

@@ -586,9 +586,9 @@ switch($cur_step) {
 		.main-titre { text-align: right; font-size: 22pt; margin-top: 10px; font-weight: 100; }
 		.rights { text-align: right; font-size: 11px; color: gray; }
 		.version { text-align: left; font-size: 11px; color: gray; }
-        .form-group {margin-bottom: 0px;}
+        .form-group {margin-bottom: 17px;}
 		.jumbotron { margin-bottom: 10px; border: 1px solid rgb(223, 223, 223); padding: 30px; color: inherit; background-color: #ffffff; }
-        .jumbotron p {margin-bottom: 15px;font-size: 14px;font-weight: 200;}
+        .jumbotron p {margin-bottom: 15px;font-size: 14px;font-weight: 200;margin-top: 14px;}
 		.avancement { height: 500px; border-right: 1px solid rgb(223, 223, 223); padding-top: 30px; }
 		.avancement p { font-size: 10pt; font-weight: 400 !important; }
 		.avancement .actif { font-weight: 600 !important; font-size: 11pt; }
@@ -646,7 +646,7 @@ switch($cur_step) {
 						?>
 						<form class="form-horizontal" method="post" autocomplete="off" id="form-content">
 <?php if ($cur_step == 0): ?>
-			<p>Processus d'installation de Evo-CMS!</p>
+			<legend>Processus d'installation de Evo-CMS!</legend>
 			<h5>Evo-CMS a besoin de certains composants pour fonctionner correctement. Nous allons maintenant vérifier si tout est en ordre après quoi vous pourrez débuter l'installation !</h5></br>
 			<legend><small>Vérification des éléments requis</small></legend>
 			<?php 

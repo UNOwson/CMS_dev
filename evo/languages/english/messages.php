@@ -24,7 +24,7 @@ return [
 	'user.website'          => 'Website',
 	'user.info_unavailable' => '- Unavailable -',
 	'user.member_since'     => '<strong>MEMBER</strong> SINCE',
-	'user.last_activity'    => '<strong>LAST</strong> Connexion',
+	'user.last_activity'    => '<strong>LAST</strong> Connection',
 	'user.country'          => 'Country',
 	'user.edit'             => 'Edit',
 	'user.report'           => 'Report',
