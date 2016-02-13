@@ -655,7 +655,6 @@ switch($cur_step) {
 				<div class="col-sm-12">
 					<select class="form-control" id="language" name="language">
 						<option value="francais" data-image="../asset/img/flags/ca.png">Français</option>
-						<option value="english" data-image="../asset/img/flags/us.png">English</option>
 					</select>
 				</div>
 			</div>
