@@ -781,54 +781,63 @@ switch($cur_step) {
 
 			$url .= substr($dir, 0, strrpos($dir, '/'));
 			?>
-			<div>
 				<legend>Configuration</legend>
-				<p>Merci de fournir les informations suivantes. Ne vous inquiétez pas, vous pourrez les modifier plus tard.</p>
-					<div class="form-group"  data-toggle="tooltip" title="Quel nom possèdera votre site ?">
-						<label for="sitename" class="col-sm-3 control-label">Nom du site</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" id="sitename" name="name" value="<?= post_e('name', 'Evo-CMS '.EVO_VERSION) ?>">
-						</div>
+				<h5>Merci de fournir les informations suivantes. Ne vous inquiétez pas, vous pourrez les modifier plus tard.</h5><br/><br/>
+				<div class="form-group" data-toggle="tooltip" title="Quel nom possèdera votre site ?">
+					<label for="sitename" class="col-sm-4 control-label">Nom du site</label>
+                    <div class="col-sm-6 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-font"></i></div>
+                        <input type="text" class="form-control" id="sitename" name="name" value="<?= post_e('name', 'Evo-CMS '.EVO_VERSION) ?>">
+                    </div>
+				</div>
+				<div class="form-group" data-toggle="tooltip" title="Quel est l'url de votre site ?">
+					<label for="siteurl" class="col-sm-4 control-label">URL du site</label>
+					<div class="col-sm-6 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-globe"></i></div>
+						<input type="text" class="form-control" id="siteurl" name="url" value="<?= post_e('url', $url) ?>">
 					</div>
-					<div class="form-group" data-toggle="tooltip" title="Quel est l'url de votre site ?">
-						<label for="siteurl" class="col-sm-3 control-label">URL du site</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" id="siteurl" name="url" value="<?= post_e('url', $url) ?>">
-						</div>
+				</div>
+				<div class="form-group" data-toggle="tooltip" title="Quel est votre adresse courriel ?">
+					<label for="sitemail" class="col-sm-4 control-label">Courriel de l'admin</label>
+					<div class="col-sm-6 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+						<input type="text" class="form-control" id="sitemail" name="email" placeholder="exemple@domain.com" value="<?= post_e('email') ?>">
 					</div>
-					<div class="form-group" data-toggle="tooltip" title="Quel est votre adresse courriel ?">
-						<label for="sitemail" class="col-sm-3 control-label">Courriel Admin</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" id="sitemail" name="email" placeholder="exemple@domain.com" value="<?= post_e('email') ?>">
-						</div>
+				</div>
+				<div class="form-group" data-toggle="tooltip" title="Nom d'utilisateur de l'administrateur">
+					<label for="sitelogin" class="col-sm-4 control-label">Nom d'utilisateur</label>
+					<div class="col-sm-6 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+						<input type="text" class="form-control" id="sitelogin" name="admin" value="admin" value="<?= post_e('admin') ?>">
 					</div>
-					<div class="form-group" data-toggle="tooltip" title="Nom d'utilisateur pour le compte administrateur">
-						<label for="sitelogin" class="col-sm-3 control-label">Utilisateur</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" id="sitelogin" name="admin" value="admin" value="<?= post_e('admin') ?>">
-						</div>
+				</div>
+				<div class="form-group"  data-toggle="tooltip" title="Mot de passe pour l'administrateur">
+					<label for="sitepass" class="col-sm-4 control-label">Mot de passe</label>
+					<div class="col-sm-6 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+						<input type="password" class="form-control" id="sitepass" name="admin_pass" value="<?= post_e('admin_pass') ?>">
 					</div>
-					<div class="form-group"  data-toggle="tooltip" title="Mot de passe pour le compte administrateur">
-						<label for="sitepass" class="col-sm-3 control-label">Mot de passe<br><small>(Tapez deux fois)</small></label>
-						<div class="col-sm-9">
-							<input type="password" class="form-control" id="sitepass" name="admin_pass" value="<?= post_e('admin_pass') ?>">
-							<input type="password" class="form-control" id="sitepass2" name="admin_pass_confirm" value="<?= post_e('admin_pass_confirm') ?>">
-						</div>
+				</div>
+				<div class="form-group">
+					<label for="sitepass" class="col-sm-4 control-label"></label>
+					<div class="col-sm-6 input-group" style="padding-left: 15px;">
+                        <div class="input-group-addon"><i class="fa fa-clipboard"></i></div>
+						<input type="password" class="form-control" id="sitepass2" name="admin_pass_confirm" placeholder="Confirmation" value="<?= post_e('admin_pass_confirm') ?>">
 					</div>
-					<div class="form-group"  data-toggle="tooltip" title="Envoyer certaines informations d'installation afin de contribuer
-																		  au développement et faciliter la résolution de bug. Aucune 
+				</div>
+				<div class="form-group"  data-toggle="tooltip" title="Envoyer certaines informations d'installation afin de contribuer
+																	  au développement et faciliter la résolution de bug. Aucune 
 																		  information de connexion n'est envoyé cependant votre email est 
 																		  incluse au besoin">
-						<label class="col-sm-3 control-label"></label>
-						<div class="col-sm-9">
-						<input type="checkbox" name="report" id="report" value="1" checked> <label for="report">Envoyer un rapport d'installation</label>
-						</div>
-					</div>
+				    <label class="col-sm-3 control-label"></label>
+				    <div class="col-sm-9">
+				        <input type="checkbox" name="report" id="report" value="1" checked> <label for="report">Envoyer un rapport d'installation</label>
+				    </div>
 				</div>
 <?php elseif ($cur_step == 5): ?>
 				<legend>Installation en cours...</legend>
-				<p>L'installation est présentement en cours. Si vous rencontrez des bugs, merci de nous le faire savoir en allant sur <a href="http://blog.evolution-network.ca/">notre site</a>.</p>
-
+				<h5>L'installation est présentement en cours. Si vous rencontrez des bugs, merci de nous le faire savoir en allant sur <a href="http://blog.evolution-network.ca/">notre site</a>.</h5>
+                </br>
 			<?php if ($failed) { ?>
 				<div class="bs-callout bs-callout-danger">
 				<h4>L'installation a échouée !</h4>
@@ -837,38 +846,39 @@ switch($cur_step) {
 			<?php } elseif ($done) { ?>
 				<div class="bs-callout bs-callout-success">
 					<h4>Félicitation, c'est terminé !</h4>
-					<p>Votre CMS est maintenant prêt à être utilisé.</p>
-					<p>Merci d'utiliser Evo-CMS. Nous espérons que cette expérience vous plaira !</p>
-					<p style="color:#B94A48;">Nous vous suggérons de supprimer le dossier "install" pour plus de sécurité.</p>
+					<h5>Votre CMS est maintenant prêt à être utilisé.</h5>
+					<h5>Merci d'utiliser Evo-CMS. Nous espérons que cette expérience vous plaira !</h5>
+					<h5 style="color:#B94A48;">Nous vous suggérons de supprimer le dossier "install" pour plus de sécurité.</h5>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-5 control-label">Url de votre site : </label>
-					<div class="col-sm-7">
-						<p class="form-control-static"><?= $_POST['url'] ?></p>
-					</div>
+                </br>
+				<div class="form-group" style="margin-bottom: 0px">
+					<label for="host" class="col-sm-5 control-label">Adresse d'accès</label>
+                    <div class="col-sm-7 input-group" style="padding-left: 15px;">
+                        <p class="form-control-static" style="font-size: 100%"><?= $_POST['url'] ?></p>
+                    </div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-5 control-label">Administration : </label>
-					<div class="col-sm-7">
-						<p class="form-control-static"><?= $_POST['url'] ?>/admin</p>
-					</div>
+                <div class="form-group" style="margin-bottom: 0px">
+					<label for="host" class="col-sm-5 control-label">Panneau de gestion</label>
+                    <div class="col-sm-7 input-group" style="padding-left: 15px;">
+                        <p class="form-control-static" style="font-size: 100%"><?= $_POST['url'] ?>/admin</p>
+                    </div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-5 control-label">Utilisateur : </label>
-					<div class="col-sm-7">
-						<p class="form-control-static"><?= $_POST['admin'] ?></p>
-					</div>
+                <div class="form-group" style="margin-bottom: 0px">
+					<label for="host" class="col-sm-5 control-label">Nom d'utilisateur</label>
+                    <div class="col-sm-7 input-group" style="padding-left: 15px;">
+                        <p class="form-control-static" style="font-size: 100%"><?= $_POST['admin'] ?></p>
+                    </div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-5 control-label">Mot de passe : </label>
-					<div class="col-sm-7">
-						<p class="form-control-static"><?= $_POST['admin_pass'] ?></p>
-					</div>
+                <div class="form-group" style="margin-bottom: 0px">
+					<label for="host" class="col-sm-5 control-label">Mot de passe</label>
+                    <div class="col-sm-7 input-group" style="padding-left: 15px;">
+                        <p class="form-control-static" style="font-size: 100%"><?= $_POST['admin_pass'] ?></p>
+                    </div>
 				</div>
-				<div class="text-center">
-					<a href="<?= htmlentities($_POST['url'].'/admin', ENT_COMPAT, 'UTF-8') ?>" class="btn btn-success">Terminer</a>
-				</div>
-				<div>&nbsp;</div>
+                </br>
+		    <div class="text-center">
+			    <a href="<?= htmlentities($_POST['url'].'/admin', ENT_COMPAT, 'UTF-8') ?>" class="btn btn-success">Terminer</a>
+			</div>
 
 			<?php } ?>
 <?php endif; ?>
