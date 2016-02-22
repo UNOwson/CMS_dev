@@ -1,0 +1,23 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond %{REQUEST_METHOD} !=POST
+	RewriteCond %{QUERY_STRING} =""
+	RewriteCond %{HTTP_COOKIE} !(evocms_\[a-z0-9\]\+_login) [NC]
+	RewriteCond %{DOCUMENT_ROOT}/cache/$0/index.html -f
+	RewriteRule (.*) cache/$0/index.html [L]
+
+	RewriteCond %{QUERY_STRING} !=""
+	RewriteRule ^(/upload/.*)$ /index.php?p=$1 [QSA,L]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ /index.php?p=$1 [QSA,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+	<FilesMatch ".(ttf|otf|eot|woff)$">
+		Header set Access-Control-Allow-Origin "*"
+	</FilesMatch>
+</IfModule>

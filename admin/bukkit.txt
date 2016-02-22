@@ -1,0 +1,86 @@
+achievement: Gives the specified player an achievement or changes a statistic value. Use '*' to give all achievements.
+ban: Prevents the specified player from using this server
+ban-ip: Prevents the specified IP address from using
+banlist: View all players banned from this server
+clear: Clears the player's inventory. Can specify item anddata filters too.
+defaultgamemode: Set the default gamemode
+deop: Takes the specified player's operator status
+difficulty: Sets the game difficulty
+effect: AddsRemoves effects on players
+enchant: Adds enchantments to the item the player is currentlyholding. Specify 0 for the level to remove an enchantment. Specify force to ignore normal enchantment restrictions
+gamemode: Changes the player to a specific game mode
+gamerule: Sets a server's game rules
+give: Gives the specified player a certain amount of items
+help: help <page>						Shows the help menu
+kick: kick <player_name>				Removes the specified player from the server
+kill: kill <player_name>				Commits suicide, only usable as a player
+list: list								Lists all online players
+me: me <message>						Performs the specified action in chat
+minecraft:achievement: A Mojang provided command.
+minecraft:ban: A Mojang provided command.
+minecraft:ban-ip: A Mojang provided command.
+minecraft:banlist: A Mojang provided command.
+minecraft:clear: A Mojang provided command.
+minecraft:defaultgamemode: A Mojang provided command.
+minecraft:deop: A Mojang provided command.
+minecraft:difficulty: A Mojang provided command.
+minecraft:effect: A Mojang provided command.
+minecraft:enchant: A Mojang provided command.
+minecraft:gamemode: A Mojang provided command.
+minecraft:gamerule: A Mojang provided command.
+minecraft:give: A Mojang provided command.
+minecraft:help: A Mojang provided command.
+minecraft:kick: A Mojang provided command.
+minecraft:kill: A Mojang provided command.
+minecraft:list: A Mojang provided command.
+minecraft:me: A Mojang provided command.
+minecraft:op: A Mojang provided command.
+minecraft:pardon: A Mojang provided command.
+minecraft:pardon-ip: A Mojang provided command.
+minecraft:playsound: A Mojang provided command.
+minecraft:say: A Mojang provided command.
+minecraft:scoreboard: A Mojang provided command.
+minecraft:seed: A Mojang provided command.
+minecraft:setidletimeout: A Mojang provided command.
+minecraft:setworldspawn: A Mojang provided command.
+minecraft:spawnpoint: A Mojang provided command.
+minecraft:spreadplayers: A Mojang provided command.
+minecraft:tell: A Mojang provided command.
+minecraft:testfor: A Mojang provided command.
+minecraft:time: A Mojang provided command.
+minecraft:toggledownfall: A Mojang provided command.
+minecraft:tp: A Mojang provided command.
+minecraft:weather: A Mojang provided command.
+minecraft:whitelist: A Mojang provided command.
+minecraft:xp: A Mojang provided command.
+op: Gives the specified player operator status
+pardon: Allows the specified player to use this server
+pardon-ip: Allows the specified IP address to use this server
+playsound: Plays a sound to a given player
+plugins: Gets a list of plugins running on the server
+reload: Reloads the server configuration and plugins
+save-all: Saves the server to disk
+save-off: Disables server autosaving
+save-on: Enables server autosaving
+say: Broadcasts the given message as the sender
+scoreboard: Scoreboard control
+seed: Shows the world seed
+setblock: A Mojang provided command.
+setidletimeout: Sets the server's idle timeout
+setworldspawn: Sets a worlds's spawn point. If no coordinates are specified, the player's coordinates will be used.
+spawnpoint: Sets a player's spawn point
+spreadplayers: Spreads players around a point
+stop: Stops the server with optional reason
+summon: A Mojang provided command.
+tell: tell <player> <message>			Sends a private message to the given player
+tellraw: A Mojang provided command.
+testfor: Tests whether a specifed player is online
+testforblock: A Mojang provided command.
+time: Changes the time on each world
+timings: Records timings for all plugin events
+toggledownfall: Toggles rain onoff on a given world
+tp: Teleports the given player (or yourself) to another player or coordinates
+version: Gets the version of this server including any plugins in use
+weather: Changes the weather
+whitelist: Manages the list of players allowed to use this server
+xp: Gives the specified player a certain amount of experience. Specify L to give levels instead, with a negative amount resulting in taking levels.

@@ -1,0 +1,389 @@
+body {
+	background: #222;
+	width: 100%;
+	font-size: 14px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,700,500italic,700italic);
+
+body {
+  background-image: url("https://fkcd.ca/Lh5.png");
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#top_bar{
+  width: 100%;
+  min-height: 70px;
+  min-width: 495px;
+  background-color: #fff;
+  position:fixed;
+  top: 0px;
+  z-index: 1;
+	-webkit-box-shadow: (0px 5px 5px -7px #222);
+	-moz-box-shadow: (0px 5px 5px -7px #222);
+	box-shadow: (0px 5px 5px -7px #222);
+}
+
+#logo_zone{
+  padding: 10px;
+  height: 70px;
+}
+#logo_zone > img {width: 45px;height: 45px;}
+#logo {
+  padding: 0px;
+  width: 70px;
+}
+@media (min-width:600px ) {
+	.subsd {border-right: 1px dashed #D7D7D7;}
+}
+@media (max-width:500px ) {
+	#notif_title{
+  		display:none;
+	}
+	#top_bar {
+  		min-width: 360px
+	}
+	.panel {min-width: 250px;}
+    #admin-menu > li {
+        margin-left: 15px;
+    }
+}
+#notif_title{
+  margin-left: 20px;
+}
+.fa-inverse {
+    color: #414548;
+}
+#notif_ico {
+  margin-top: 25px;
+  margin-right: 15px;
+  width: 100%;
+  height: 35px;
+}
+#notif_ico a {color:#E0E0E0;text-decoration:none;}
+#notif_ico a:hover {color: #222}
+
+#notif_ico li {
+  list-style: none;
+  color: gray;
+  float: left;
+  font-size: 18px;
+  margin-left: 15px;
+  width: 60px;
+}
+#notif_ico > li > a > span {
+    font-size: 10px;
+    position: relative;
+    top: -10px;
+    left: -5px;
+}
+ul {padding-left: 0px;}
+
+#menu_zone {
+  background-color: #414548;
+  width: 70px;
+  padding-right: 0px;
+  padding-left: 0px;
+  position: absolute;
+  border-bottom-right-radius: 5px;
+}
+#menu_zone #logo_zone {background-color: rgb(32, 32, 32);}
+#menu_ico .logon_ico {background-color: #222}
+#menu_ico .logon_ico > img{border-radius: 50px}
+#menu_ico li{
+  list-style: none;
+  font-size: 25px;
+  display: block;
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 15px
+}
+#menu_ico a {color:gray}
+#menu_ico a:hover {color: white}
+.dropdown-header {
+    font-size: 14px;
+    font-family: 'Ubuntu', sans-serif;
+    position: relative;
+    top: 4px;
+}
+#Wrapper_zone {
+    margin-left: 70px;
+    padding: 20px;
+}
+.navbar-nav > li > .dropdown-menu {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 5px;
+}
+.panel {
+	background-color: rgba(255, 255, 255, 0.75);    
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: inherit;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 100;
+}
+#chart {
+  margin:0 auto;
+  border-radius:50px;
+  float:left;
+  margin:10px;
+  padding:10px;
+  text-align:center;
+  width:100px;
+  height:100px
+}
+#charts {
+  max-width: 960px;
+  margin: 0 auto;
+  list-style: none;
+}
+#charts p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300
+}
+#charts > .mysql {
+  border: 3px solid #2FA4E7;
+}
+#charts > .php {
+  border: 3px solid #033C73;
+}
+#charts > .version {
+  border: 3px solid #009090;
+}
+#charts > .build {
+  border: 3px solid #9954BB;
+}
+#charts > .dbv {
+  border: 3px solid #E700FF;
+}
+#charts > .os {
+  border: 3px solid #73A839;
+}
+#charts > .members {
+  border: 3px solid #DD5600;
+}
+#charts > .visitors {
+  border: 3px solid #C71C22;
+}
+#charts > #chart > .title {color:#414548;font-size: 8pt;font-family: 'Ubuntu', sans-serif;}
+#charts > #chart > .info {font-size: 20px;margin: 15px 0px 0px;}
+
+.panel {
+    -webkit-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
+}
+  #stats_data {
+    max-width:950px;
+    margin:0 auto;
+  }
+  #stats_data legend {
+  	font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+  	font-weight: 300
+  }
+  #stats_data i {
+    margin-right: 5px;
+  }
+  #stats_data ul {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 10pt;
+    font-weight: 100;
+    list-style: none;
+}
+  #stats_data .subsd {
+    padding: 10px;
+    width: 230px;
+    height: 190px;
+    float: left;
+    margin-left: 10px;
+    margin:0 auto;
+  }
+
+  #stats_data .squota {
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-left: 10px
+  }
+  .panel-default > .panel-heading {background-color: rgb(65, 69, 72); color: white;}
+  .panel-default > .a-panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    background-color: rgb(65, 69, 72); color: white;
+    
+}
+  .panel-heading > h3 {font-family: 'Ubuntu', sans-serif;font-weight: 300;font-size: 14px;}
+
+#admin-menu > li > .dropdown-menu {top: 0%;left: 70px;}
+
+#admin-menu > li, #quit-btn {
+	text-align: center;
+}
+
+#admin-menu > li > a {
+    color: #818181;
+}
+
+#admin-menu > li > ul {
+	text-align: left;
+}
+
+#admin-menu > li {
+    width: 70px;
+    margin-bottom: 15px;
+}
+
+#admin-menu > li.active > a, #admin-menu > li:hover > a, #admin-menu > li > a:focus {
+	color: #fff;
+	background: #202020;
+}
+
+#admin-menu .quit-btn {
+	float: right;
+}
+
+#admin-menu .quit-btn a {
+	text-align: right;
+    padding-right: -1px;
+}
+#admin-menu .quit-btn:hover a {
+	color: #cc0000;
+	background: none;
+	border-color: transparent;
+}
+
+#admin-wrapper {
+	width: auto;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+#admin-page {
+    width: auto;
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #C5C5C5;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px #DCE2E4;
+    display: block;
+    position: relative;
+    padding: 19px;
+}
+
+#user-dropdown {
+	position:relative;
+}
+
+#user-dropdown .btn {
+	background: #222;
+	color: #fff;
+	font-size: 100%;
+	border: none;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+#footer, #footer a {
+}
+
+#debug {
+	color: black;
+}
+
+legend a:focus {
+	text-decoration: none;
+	outline: 0;
+}
+
+table.sortable tr td:nth-child(3):after {
+	font-family: FontAwesome;
+	content: " \f0dc";
+	color: white;
+}
+
+table.sortable tr:hover td:nth-child(3):after {
+	color: inherit
+}
+
+
+
+
+.gallery {
+	text-align:center;
+}
+
+
+.gallery-container {
+	display: inline-block;
+	vertical-align: bottom;
+	position: relative;
+	margin:0px;
+	padding: 5px 5px 5px 0px;
+	text-align: center;
+	min-height: 175px;
+	width: 215px;
+}
+
+.gallery-editor {
+	max-height: 90%;
+	min-width: 300px;
+	max-height: 650px;
+	overflow-y: auto;
+}
+
+.gallery-editor  .gallery-container {
+	min-height: 190px;
+	vertical-align: middle;
+}
+
+.gallery .active {
+	border: 4px solid #0081C2;
+	box-shadow: 0 0 10px #0081C2;
+}
+
+.gallery-container img {
+	border: 2px solid #CFCFCF;
+	max-height: 150px;
+	max-width: 100%;
+}
+
+div.image_selector  {
+	text-align: left;
+	width: auto;
+}
+
+.image_selector img {
+	height:64px;
+	width:64px;
+	border-radius:2px;
+	border:2px solid transparent;
+	cursor: pointer;
+}
+
+.image_selector img.selected {
+	border: 4px solid #0081C2;
+	box-shadow: 0 0 10px #0081C2;
+}
+
+.avatar {
+  max-height: 100px;
+  max-width: 100px;
+  /* border-radius: 50px; */
+  box-shadow: 0px 0px 3px 1px #666;
+}
+
+ .fancybox-inner .banlist {
+	width: 95%;
+}
