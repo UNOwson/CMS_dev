@@ -362,4 +362,11 @@ return [
     'dropdown.files'        => 'Mes Fichiers',
     'dropdown.admin'        => 'Administration',
     'dropdown.logoff'       => 'Se Déconnecter',
+
+	'pageview.email_inv'        => 'E-mail invalidw',
+	'pageview.inv_cod'          => 'Verification code mismatch!',
+	'pageview.new_comment_ad'   => 'Commentaire enregistré !',
+	'pageview.error'            => 'Cette page n\'existe pas. Vérifiez l\'url',
+	'pageview.new_comment'      => 'Donnez votre avis sur cette page:',
+    'pageview.new_flag'         => 'Commentaire flaggé sur la page:',
 ];

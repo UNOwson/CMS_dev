@@ -245,16 +245,6 @@ return [
     'profile.sn_website'    => 'My Website address',
     'profile.prez_textarea' => 'Introduce yourself !',
 
-    'profile.warning_bad_rank'          => 'You can not change someone highest ranking profile.',
-    'profile.warning_bad_group'         => 'You can assign a group High more than your current group.',
-    'profile.warning_ban'               => 'Sorry this user or email has been banned for :',
-    'profile.warning_field_not'         => 'Invalid field :',
-    'profile.warning_u_already'         => 'Username already in use',
-    'profile.warning_field_need'        => 'Required field :',
-    'profile.warning_update_pass_old'   => 'You must enter your current password before the update!',
-    'profile.warning_update_pass_act'   => 'You must enter your current password to change your email address!',
-    'profile.success_updated'           => 'Updated profile !',
-
 	'profile2.user'         => 'Username :',
 	'profile2.password'     => 'Password :',
     'profile2.email'        => 'Email Address :',
@@ -268,7 +258,18 @@ return [
 	'profile2.levat'        => 'Account level :',
 	'profile2.them'         => 'Theme :',
 	'profile2.avatar'       => 'My avatar :',
-	'profile2.modu'         => 'Modification du profil de ',
+	'profile2.modu'         => 'Editing profil of : ',
+	'profile2.modw'         => 'Modify profil of :',
+
+    'profile.warning_bad_rank'          => 'You can not change someone highest ranking profile.',
+    'profile.warning_bad_group'         => 'You can assign a group High more than your current group.',
+    'profile.warning_ban'               => 'Sorry this user or email has been banned for :',
+    'profile.warning_field_not'         => 'Invalid field :',
+    'profile.warning_u_already'         => 'Username already in use',
+    'profile.warning_field_need'        => 'Required field :',
+    'profile.warning_update_pass_old'   => 'You must enter your current password before the update!',
+    'profile.warning_update_pass_act'   => 'You must enter your current password to change your email address!',
+    'profile.success_updated'           => 'Updated profile !',
 
     'getfile.notfound'      => 'File not found !',
     'getfile.badlink'       => 'Bad link',
@@ -361,4 +362,11 @@ return [
     'dropdown.files'        => 'My Files',
     'dropdown.admin'        => 'Administration',
     'dropdown.logoff'       => 'Log Off',
+
+	'pageview.email_inv'        => 'E-mail invalid',
+	'pageview.inv_cod'          => 'Verification code mismatch!',
+	'pageview.new_comment_ad'   => 'Comment saved!',
+	'pageview.error'            => 'This page does not exist Please check your url!',
+	'pageview.new_comment'      => 'Comment on this page:',
+    'pageview.new_flag'         => 'Comment flaged on the page :',
 ];
