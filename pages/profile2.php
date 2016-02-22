@@ -97,7 +97,7 @@ if (!$user_info) {
 }
 
 if ($user_info['group']['priority'] < $user_session['group']['priority']) {
-	return $_warning = 'Vous ne pouvez modifier le profil de quelqu\'un plus gradé.';
+	return $_warning = __('profile.notice_error_mod');
 }
 
 
@@ -105,7 +105,7 @@ if ($_POST) {
 	$edits = [];
 	
 	if (!has_permission('admin.edit_uprofile', true) && $ban = check_banlist($_POST)) {
-		$_warning .= 'Désolé cet utilisateur ou email a été banni: ' . html_encode($ban['reason']) . '<br>';
+		$_warning .= __('profile.banned') . html_encode($ban['reason']) . '<br>';
 		unset($fields['username'], $fields['email']);
 	}
 	
@@ -126,9 +126,9 @@ if ($_POST) {
 			(is_string($f[0]) && !preg_match($f[0], $value))) // OR if not acceptable string
 			&& !($f[1] !== true && $value === '') // AND if the parameter is not both empty and optional
 		) {
-			$_warning .= 'Champ invalide: '.$field.'<br>';
+			$_warning .= __('profile.inv').$field.'<br>';
 		} elseif ($f[1] === true && $value === '') {
-			$_warning .= 'Champ requis: '.$field.'<br>';
+			$_warning .= __('profile.need').$field.'<br>';
 		} else {
 			$edits[$field] = $value;
 		}
@@ -136,7 +136,7 @@ if ($_POST) {
 	
 	if (isset($edits['password']) && $edits['password'] !== '') {
 		if (!compare_password($user_info['password'], _POST('password_old'), $user_info['salt'])) {
-			$_warning .= 'Vous devez entrer votre mot de passe actuel avant de le mettre à jour!';
+			$_warning .= __('profile.password_clear');
 		} else {
 			list($edits['password'], $edits['salt']) = hash_password($edits['password']);
 		}
@@ -146,7 +146,7 @@ if ($_POST) {
 	
 	if (isset($edits['email'])) {
 		if (!compare_password($user_info['password'], _POST('password_old'), $user_info['salt'])) {
-			$_warning .= 'Vous devez entrer votre mot de passe actuel afin de changer d\'adresse email!';
+			$_warning .= __('profile.password_error_email');
 		}
 	}
 	
@@ -158,15 +158,15 @@ if ($_POST) {
 	
 	if (isset($group) && $user_session['group']['priority'] > $group['priority'])
 	{
-		return $_warning = 'Vous ne pouvez assigner un groupe plus élévé que votre groupe actuel.';
+		return $_warning = __('profile.group_error');
 	}
 	elseif (isset($edits['username']) && Db::Get('select username from {users} where username = ?', $edits['username']))
 	{
-		$_warning .= 'Cet utilisateur est déjà pris!';
+		$_warning .= __('profile.user_readytoken');
 	}
 	elseif (!empty($edits) && empty($_warning) && Db::Exec('update {users} set ' . $f . ' where `id` = ' . $user_info['id'], array_values($edits)) !== false) 
 	{	
-		$_success = 'Profil mis à jour!';
+		$_success = __('profile.updated');
 		
 		log_event($user_info['id'], 'user', 'Modification de profil: '.implode(', ', array_keys($edits)));
 		
@@ -187,21 +187,21 @@ if ($_POST) {
 
 $f = [
 	'username' => [
-		'label' => 'Nom d\'utilisateur: ',
+		'label' => __('profile2.user'),
 		'type' => 'text',
 		'value' => _POST('username', $user_info['username']),
 		'validation' => PREG_USERNAME,
 		'required' => true,
 	],
 	'email' => [
-		'label' => 'Votre Email: ',
+		'label' => __('profile2.email'),
 		'type' => 'text',
 		'value' => _POST('email', $user_info['email']),
 		'validation' => PREG_EMAIL,
 		'required' => true,
 	],
 	'country' => [
-		'label' => 'Votre Pays: ',
+		'label' => __('profile2.country'),
 		'type' => 'select',
 		'options' => $_countries,
 		'value' => _POST('country', $user_info['country']),
@@ -209,7 +209,7 @@ $f = [
 		'required' => true,
 	],
 	'timezone' => [
-		'label' => 'Fuseau horaire: ',
+		'label' => __('profile2.tzone'),
 		'type' => 'select',
 		'options' => $timezones,
 		'value' => _POST('timezone', $user_info['timezone']),
@@ -217,25 +217,25 @@ $f = [
 		'required' => true,
 	],
 	[
-		'label' => 'Options',
+		'label' => __('profile2.options'),
 		'type' => 'multiple',
 		'fields' => [
 			'hide_email' => [
-				'label' => ' Cacher mon email des autres membres',
+				'label' => __('profile2.hide_email'),
 				'type' => 'checkbox',
 				'checked' => _POST('hide_email', $user_info['hide_email']),
 				'value' => 1,
 				'validation' => PREG_DIGIT,
 			],
 			'newsletter' => [
-				'label' => 'Je désire recevoir la newsletter',
+				'label' => __('profile2.newsletter'),
 				'type' => 'checkbox',
 				'checked' => _POST('newsletter', $user_info['newsletter']),
 				'value' => 1,
 				'validation' => PREG_DIGIT,
 			],
 			'discuss' => [
-				'label' => 'Activer le mode discussion pour messagerie interne',
+				'label' => __('profile2.discuss'),
 				'type' => 'checkbox',
 				'checked' => _POST('discuss', $user_info['discuss']),
 				'value' => 1,
@@ -244,25 +244,25 @@ $f = [
 		],
 	],
 	'password' => [
-		'label' => 'Mot de passe: ',
+		'label' => __('profile2.password'),
 		'type' => 'multiple',
 		'fields' => [
 			'password' => [
 				'type' => 'password',
 				'value' => '',
-				'attributes' => ['placeholder' => 'Nouveau mot de passe'],
+				'attributes' => ['placeholder' => __('profile.password_new')],
 				'validation' => PREG_PASSWORD,
 			],
 			'password_old' => [
 				'type' => 'password',
 				'value' => '',
-				'attributes' => ['placeholder' => 'Mot de passe actuel'],
+				'attributes' => ['placeholder' => __('profile.password_old')],
 				'validation' => PREG_PASSWORD,
 			],
 		],
 	],
 	'raf' => [
-		'label' => 'Parrain: ',
+		'label' => __('profile2.recruiter'),
 		'type' => 'text',
 		'value' => _POST('raf', $user_info['raf']),
 		'validation' => PREG_USERNAME,
@@ -276,20 +276,20 @@ $f = [
 		'attributes' => ['placeholder' => $_community['ingame_label']],
 	],
 	'group_id' => [
-		'label' => 'Niveau du compte',
+		'label' => __('profile2.levat'),
 		'type' => 'select',
 		'value' => $user_info['group_id'],
 		'options' => $groups,
 	],
 	'theme' => [
-		'label' => 'Thème',
+		'label' => __('profile2.them'),
 		'type' => 'select',
 		'value' => _POST('theme', $user_info['theme']),
-		'options' => ['' => 'Theme de l\'administrateur'] + array_map(function($a) {return new htmlSelectGroup($a);}, get_themes()),
+		'options' => ['' => __('profile.mod_them')] + array_map(function($a) {return new htmlSelectGroup($a);}, get_themes()),
 		'validation' => PREG_FILENAME,
 	],
 	'avatar' => [
-		'label' => 'Mon avatar: ',
+		'label' => __('profile2.avatar'),
 		'type' => 'avatar',
 		'value' => $user_info['avatar'],
 		'avatar' => get_avatar($user_info, 42, true),
@@ -302,7 +302,7 @@ $f = [
 
 ?>
 <form method="post" role="form" class="form-horizontal">
-<?=build_form('Modification du profil de ' . $user_info['username'], $f, false)?>
+<?=build_form(__('profile2.modu') . $user_info['username'], $f, false)?>
 </form>
 
 

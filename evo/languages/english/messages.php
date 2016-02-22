@@ -255,6 +255,21 @@ return [
     'profile.warning_update_pass_act'   => 'You must enter your current password to change your email address!',
     'profile.success_updated'           => 'Updated profile !',
 
+	'profile2.user'         => 'Username :',
+	'profile2.password'     => 'Password :',
+    'profile2.email'        => 'Email Address :',
+    'profile2.country'      => 'Your Country :',
+    'profile2.tzone'        => 'Time zone :',
+	'profile2.options'      => 'Tools :',
+	'profile2.newsletter'   => 'I Wish receive newsletters',
+	'profile2.discuss'      => 'Activate discussion internal',
+	'profile2.hide_email'   => 'Hide my email from other members',
+	'profile2.recruiter'    => 'My recruiter :',
+	'profile2.levat'        => 'Account level :',
+	'profile2.them'         => 'Theme :',
+	'profile2.avatar'       => 'My avatar :',
+	'profile2.modu'         => 'Modification du profil de ',
+
     'getfile.notfound'      => 'File not found !',
     'getfile.badlink'       => 'Bad link',
 
