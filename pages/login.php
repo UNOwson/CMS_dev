@@ -14,11 +14,11 @@ elseif ($action === 'login' && !empty($_POST['login']))
 			if ($r['locked']) {
 				if (isset($_POST['resendkey'])) {
 					if (send_activation_email($r['username']))
-						return $_notice = 'Le message a été envoyé!';
+						return $_notice = __('login.login_notice_mail_send');
 					else 
-						return $_warning = 'Erreur lors de l\'envoi du message!';
+						return $_warning = __('login.login_warning_mail_send');
 				}
-				$warning = 'Ce compte n\'est pas actif.';
+				$warning = __('login.login_warning_inactiv_acc');
 				if ((int)$r['locked'] === 2) {
 					$warning .= '<br><form method="post">
 										<input type="hidden" name="login" value="' . html_encode($r['username']). '">
@@ -26,12 +26,12 @@ elseif ($action === 'login' && !empty($_POST['login']))
 								      </form>';
 				}
 				
-				throw new WarningException('Ce compte n\'est pas actif', $warning);
+				throw new WarningException('login.login_warning_inactiv_acc', $warning);
 			}
 			if (compare_password($r['password'], $_POST['pass'], $r['salt'])) 
 				{
 					$user_session = $r;
-					log_event($r['id'], 'user', 'Connexion sur le site depuis le formulaire login.');
+					log_event($r['id'], 'user', __('login.login_log_connected'));
 					
 					cookie_login($r['id'], $_POST['remember'] ? time() + 63072000 : 0);
 
@@ -42,11 +42,11 @@ elseif ($action === 'login' && !empty($_POST['login']))
 					http_redirect($redir);
 				}
 			else {
-				$_warning = 'Mot de passe invalide.';
+				$_warning = __('login.login_warning_invalid_pass');
 			}	
 		}
 	else {
-		$_warning = 'Compte non reconnu.';
+		$_warning = __('login.active_warning_unknow_acc');
 	}
 }
 elseif ($action === 'forget' && !empty($_POST['login']))
@@ -56,43 +56,43 @@ elseif ($action === 'forget' && !empty($_POST['login']))
 		$key = sha1(rand(0, time()).uniqid($r['username']));
 		Db::Exec('UPDATE {users} SET reset_key = ? WHERE id = ?', $key, $r['id']);
 		
-		log_event($r['id'], 'user', 'Demande de nouveau mot de passe.');
+		log_event($r['id'], 'user', __('login.forget_new_pass_demand'));
 		
 		$message = parse_template('mail/activate_password.tpl', array('username' => $r['username'], 'resetlink' => create_url('login', ['action'=>'reset','key'=>$key,'username'=>$r['username']])));
 		
 		if (sendmail($r['email'], 'Oublie de mot de passe', $message)) {
-			return $_success = 'Vous devriez recevoir un lien d\'ici peu !';
+			return $_success = __('login.forget_success_req_send');
 		}
 		else {
-			$_warning = 'Erreur lors de l\'envoi du mail !';
+			$_warning = __('login.forget_warning_email_send');
 		}
 	}
 	else {
-		$_warning = 'Compte non reconnu.';
+		$_warning = __('login.active_warning_unknow_acc');
 	}
 }
 elseif($action === 'reset')
 {
 	if (empty($_GET['key']) || empty($_GET['username']))
-		throw new Warning('Ce lien est invalide.');
+		throw new Warning('login.reset_warning_invalid_link');
 	
 	$r = Db::Get('SELECT id,username,salt,password,reset_key FROM {users} WHERE username = ? AND reset_key = ?', $_GET['username'], $_GET['key']);
 	
 	if (!$r)
-		throw new Warning('Ce lien est invalide.');
+		throw new Warning('login.reset_warning_invalid_link');
 	
 	if (isset($_POST['new_password'], $_POST['new_password1'])) {
 		if ($_POST['new_password'] != $_POST['new_password1']) {
-			$_warning = 'Mot de passe non identiques !';
+			$_warning = __('login.reset_warning_same_password');
 		} else {
 			$salt = salt_password(10);
 			$password = hash_password($_POST['new_password'], $salt);
 
 			Db::Exec('UPDATE {users} SET reset_key = null, password = ?, salt = ? WHERE username = ?', $password, $salt, $r['username']);
 
-			log_event($r['id'], 'user', 'Activation de nouveau mot de passe.');
+			log_event($r['id'], 'user', __('login.reset_log_newpass_activated'));
 			
-			$_success = 'Votre nouveau mot de passe a été enregistré !';
+			$_success = __('login.reset_success_newpass_reg');
 			$action = 'login';
 		}
 	}
@@ -111,11 +111,11 @@ elseif ($action === 'activate' && !empty($_GET['key']) && !empty($_GET['username
 					http_redirect(create_url('user'));
 				}
 			else {
-				return $_warning = 'Votre compte est déjà actif ou la clée est invalide.';
+				return $_warning = __('login.active_warning_already_key');
 			}
 		}
 	else {
-		return $_warning = 'Compte non reconnu.';
+		return $_warning = __('login.active_warning_unknow_acc');
 	}
 }
 
