@@ -86,11 +86,7 @@ if (!$user_info) {
 }
 
 if ($user_info['group']['priority'] < $user_session['group']['priority']) {
-<<<<<<< HEAD
 	return $_warning = __('profile.warning_bad_rank');
-=======
-	return $_warning = 'Vous ne pouvez modifier le profil de quelqu\'un plus gradé.';
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 }
 
 
@@ -98,11 +94,7 @@ if ($_POST) {
 	$edits = [];
 	
 	if (!has_permission('admin.edit_uprofile') && $ban = check_banlist($_POST)) {
-<<<<<<< HEAD
 		$_warning .= '' . __('profile.warning_ban') . '' . html_encode($ban['reason']) . '<br>';
-=======
-		$_warning .= 'Désolé cet utilisateur ou email a été banni: ' . html_encode($ban['reason']) . '<br>';
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		unset($fields['username'], $fields['email']);
 	}
 	
@@ -123,15 +115,9 @@ if ($_POST) {
 			(is_string($f[0]) && !preg_match($f[0], $value))) // OR if not acceptable string
 			&& !($f[1] !== true && $value === '') // AND if the parameter is not both empty and optional
 		) {
-<<<<<<< HEAD
 			$_warning .= ''.__('profile.warning_field_not').''.$field.'<br>';
 		} elseif ($f[1] === true && $value === '') {
 			$_warning .= ''.__('profile.warning_field_need').''.$field.'<br>';
-=======
-			$_warning .= 'Champ invalide: '.$field.'<br>';
-		} elseif ($f[1] === true && $value === '') {
-			$_warning .= 'Champ requis: '.$field.'<br>';
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		} else {
 			$edits[$field] = $value;
 		}
@@ -139,11 +125,7 @@ if ($_POST) {
 	
 	if (isset($edits['password']) && $edits['password'] !== '') {
 		if (!compare_password($user_info['password'], _POST('password_old'), $user_info['salt'])) {
-<<<<<<< HEAD
 			$_warning .= __('profile.warning_update_pass_old');
-=======
-			$_warning .= 'Vous devez entrer votre mot de passe actuel avant de le mettre à jour!';
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		} else {
 			list($edits['password'], $edits['salt']) = hash_password($edits['password']);
 		}
@@ -153,11 +135,7 @@ if ($_POST) {
 	
 	if (isset($edits['email'])) {
 		if (!compare_password($user_info['password'], _POST('password_old'), $user_info['salt'])) {
-<<<<<<< HEAD
 			$_warning .= __('profile.warning_update_pass_act');
-=======
-			$_warning .= 'Vous devez entrer votre mot de passe actuel afin de changer d\'adresse email!';
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		}
 	}
 	
@@ -169,7 +147,6 @@ if ($_POST) {
 	
 	if (isset($group) && $user_session['group']['priority'] > $group['priority'])
 	{
-<<<<<<< HEAD
 		return $_warning = __('profile.warning_update_bad_group');
 	}
 	elseif (isset($edits['username']) && Db::Get('select username from {users} where username = ?', $edits['username']))
@@ -179,17 +156,6 @@ if ($_POST) {
 	elseif (!empty($edits) && empty($_warning) && Db::Exec('update {users} set ' . $f . ' where `id` = ' . $user_info['id'], array_values($edits)) !== false) 
 	{	
 		$_success = __('profile.success_updated');
-=======
-		return $_warning = 'Vous ne pouvez assigner un groupe plus élévé que votre groupe actuel.';
-	}
-	elseif (isset($edits['username']) && Db::Get('select username from {users} where username = ?', $edits['username']))
-	{
-		$_warning .= 'Cet utilisateur est déjà pris!';
-	}
-	elseif (!empty($edits) && empty($_warning) && Db::Exec('update {users} set ' . $f . ' where `id` = ' . $user_info['id'], array_values($edits)) !== false) 
-	{	
-		$_success = 'Profil mis à jour!';
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		
 		log_event($user_info['id'], 'user', 'Modification de profil: '.implode(', ', array_keys($edits)));
 		
@@ -205,53 +171,33 @@ if ($_POST) {
 	}
 }
 ?>
-<<<<<<< HEAD
 <legend><?= __('profile.title')?> <?php echo $user_info['username']?></legend>
 <form method="post" role="form" class="form-horizontal" autocomplete="off">
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="username"><?= __('profile.username')?></label>
-=======
-<legend>Modification du profil de <?php echo $user_info['username']?></legend>
-<form method="post" role="form" class="form-horizontal" autocomplete="off">
-	<div class="form-group">
-		<label class="col-sm-4 control-label" for="username">Nom d'utilisateur :</label>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		<div class="col-sm-6">
 			<input class="form-control" name="username" type="text" value="<?php echo $user_info['username']?>">
 		</div>
 	</div>
 	<div class="form-group">
-<<<<<<< HEAD
 		<label class="col-sm-4 control-label" for="mail"><?= __('profile.email')?></label>
-=======
-		<label class="col-sm-4 control-label" for="mail">Votre Email :</label>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		<div class="col-sm-6">
 			<input class="form-control password-required" name="email" type="text" data-old-value="<?php echo html_encode($user_info['email'])?>" value="<?php echo html_encode($user_info['email'])?>">
 		</div>
 	</div>
 	<div class="form-group">
-<<<<<<< HEAD
 		<label class="col-sm-4 control-label" for="mail"><?= __('profile.country')?></label>
-=======
-		<label class="col-sm-4 control-label" for="mail">Votre Pays :</label>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		<div class="col-sm-6">
 			<?php echo html_select('country', $_countries, $user_info['country']); ?>
 		</div>
 	</div>
 	<div class="form-group">
-<<<<<<< HEAD
 		<label class="col-sm-4 control-label" for="mail"><?= __('profile.tzone')?></label>
-=======
-		<label class="col-sm-4 control-label" for="mail">Fuseau horaire :</label>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		<div class="col-sm-6">
 			<?php echo html_select('timezone', $timezones, $user_session['timezone'] ?: Site('timezone'), false); ?>
 		</div>
 	</div>
 	<div class="form-group">
-<<<<<<< HEAD
 		<label class="col-sm-4 control-label" for="newsletter"><?= __('profile.options')?></label>
 		<div class="col-sm-8">
 			<input id="hide_email" name="hide_email" type="checkbox" value="1" <?php if ($user_info['hide_email'] == 1) echo 'checked';?>>
@@ -273,29 +219,6 @@ if ($_POST) {
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="parrain"><?= __('profile.recruiter')?></label>
-=======
-		<label class="col-sm-4 control-label" for="newsletter">Options :</label>
-		<div class="col-sm-8">
-			<input id="hide_email" name="hide_email" type="checkbox" value="1" <?php if ($user_info['hide_email'] == 1) echo 'checked';?>>
-			<label for="hide_email" class="normal">Cacher mon email des autres membres</label><br>
-			<input id="newsletter" name="newsletter" type="checkbox" value="1" <?php if (@$user_info['newsletter'] == 1) echo 'checked';?>>
-			<label for="newsletter" class="normal">Je désire recevoir la newsletter</label><br>
-			<input id="discuss" name="discuss" type="checkbox" value="1" <?php if ($user_info['discuss'] == 1) echo 'checked';?>>
-			<label for="discuss" class="normal">Activer le mode discussion pour messagerie interne</label><br>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-sm-4 control-label" for="password">Mot de passe :</label>
-		<div class="col-sm-6">
-			<input name="password" type="password" hidden><!-- that's to stop chrome's autocomplete -->
-			<input name="password" type="password" data-old-value="" class="form-control password-required" placeholder="Nouveau mot de passe">
-			<br>
-			<input name="password_old" type="password" class="form-control" placeholder="Mot de passe actuel">
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-sm-4 control-label" for="parrain">Mon parrain :</label>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		<div class="col-sm-4">
 			<input class="form-control" data-autocomplete="userlist" name="raf" id="parrain" type="text" value="<?= html_encode($user_info['raf'])?>" <?php if (!isset($fields['raf'])) echo 'disabled'; ?>>
 		</div>
@@ -309,11 +232,7 @@ if ($_POST) {
 	</div>
 	<?php } ?>
 	<div class="form-group">
-<<<<<<< HEAD
 		<label class="col-sm-4 control-label" for="permission"><?= __('profile.acc_lvl')?></label>
-=======
-		<label class="col-sm-4 control-label" for="permission">Niveau du compte :</label>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		<div class="col-sm-6">
 			<?php
 				$groups = Db::QueryAll('select * from {groups} order by priority asc', true);
@@ -333,11 +252,7 @@ if ($_POST) {
 		</div>
 	</div>
 	<div class="form-group">
-<<<<<<< HEAD
 		<label class="col-sm-4 control-label" for="theme"><?= __('profile.theme')?></label>
-=======
-		<label class="col-sm-4 control-label" for="theme">Thème :</label>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		<div class="col-sm-6">
 				<?php
 					if (Site('change_theme'))
@@ -348,11 +263,7 @@ if ($_POST) {
 		</div>
 	</div>
 	<div class="form-group">
-<<<<<<< HEAD
 		<label class="col-sm-4 control-label" for="avatar"><?= __('profile.avatar')?></label>
-=======
-		<label class="col-sm-4 control-label" for="avatar">Mon Avatar :</label>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		<div class="col-sm-5">
 			<?php echo html_select('avatar', $avatars, $user_info['avatar'], true, ['class' => 'avatar_selector form-control']); ?>
 			<span style="margin-left: 10px;position: relative;top: -4px;"><img id="avatar_selector_preview" title="Votre avatar actuel" width="42" height="42" src="<?php echo get_avatar($user_info, 42, true)?>"></span>
@@ -363,66 +274,41 @@ if ($_POST) {
 	
 	<br><br>
 	
-<<<<<<< HEAD
 	<legend><?= __('profile.sn_title')?></legend>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="facebook" title="Facebook"><i class="fa fa-facebook fa-2x"></i></label>
 		<div class="col-sm-6">
 			<input class="form-control" id="facebook" name="facebook" type="text" value="<?php echo html_encode($user_info['facebook'])?>" placeholder="<?= __('profile.sn_fb')?>">
-=======
-	<legend>Les réseaux sociaux</legend>
-	<div class="form-group">
-		<label class="col-sm-4 control-label" for="facebook" title="Facebook"><i class="fa fa-facebook fa-2x"></i></label>
-		<div class="col-sm-6">
-			<input class="form-control" id="facebook" name="facebook" type="text" value="<?php echo html_encode($user_info['facebook'])?>" placeholder="Nom de compte facebook">
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="twitter" title="Twitter"><i class="fa fa-twitter fa-2x"></i></label>
 		<div class="col-sm-6">
-<<<<<<< HEAD
 			<input class="form-control" id="twitter" name="twitter" type="text" value="<?php echo html_encode($user_info['twitter'])?>" placeholder="<?= __('profile.sn_tweeter')?>">
-=======
-			<input class="form-control" id="twitter" name="twitter" type="text" value="<?php echo html_encode($user_info['twitter'])?>" placeholder="Nom de compte twitter">
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="skype" title="Skype"><i class="fa fa-skype fa-2x"></i></label>
 		<div class="col-sm-6">
-<<<<<<< HEAD
 			<input class="form-control" id="skype" name="skype" type="text" value="<?php echo html_encode($user_info['skype'])?>" placeholder="<?= __('profile.sn_skype')?>">
-=======
-			<input class="form-control" id="skype" name="skype" type="text" value="<?php echo html_encode($user_info['skype'])?>" placeholder="Nom de compte skype">
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="twitch" title="Twitch"><i class="fa fa-twitch fa-2x"></i></label>
 		<div class="col-sm-6">
-<<<<<<< HEAD
 			<input class="form-control" id="twitch" name="twitch" type="text" value="<?php echo html_encode($user_info['twitch'])?>" placeholder="<?= __('profile.sn_twitch')?>">
-=======
-			<input class="form-control" id="twitch" name="twitch" type="text" value="<?php echo html_encode($user_info['twitch'])?>" placeholder="Nom de compte twitch">
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="youtube" title="Youtube"><i class="fa fa-youtube fa-2x"></i></label>
 		<div class="col-sm-6">
-<<<<<<< HEAD
 			<input class="form-control" id="youtube" name="youtube" type="text" value="<?php echo html_encode($user_info['youtube'])?>" placeholder="<?= __('profile.sn_youtube')?>">
-=======
-			<input class="form-control" id="youtube" name="youtube" type="text" value="<?php echo html_encode($user_info['youtube'])?>" placeholder="Adresse du channel youtube">
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
 		</div>
 	</div>
 	
 	<div class="form-group">
 		<label class="col-sm-4 control-label" for="website" title="Site web"><i class="fa fa-globe fa-2x"></i></label>
 		<div class="col-sm-6">
-<<<<<<< HEAD
 			<input class="form-control" id="website" name="website" type="text" value="<?php echo html_encode($user_info['website'])?>" placeholder="<?= __('profile.sn_website')?>">
 		</div>
 	</div>
@@ -431,19 +317,9 @@ if ($_POST) {
 	<div class="form-group">
 		<div class="col-md-10 col-md-offset-1">
 			<textarea class="form-control" name="about" placeholder="<?= __('profile.prez_textarea')?>"><?php echo html_encode($user_info['about'])?></textarea>
-=======
-			<input class="form-control" id="website" name="website" type="text" value="<?php echo html_encode($user_info['website'])?>" placeholder="Votre site internet">
 		</div>
 	</div>
 
-	<legend>Présentation</legend>
-	<div class="form-group">
-		<div class="col-md-10 col-md-offset-1">
-			<textarea class="form-control" name="about" placeholder="Présentez vous!"><?php echo html_encode($user_info['about'])?></textarea>
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
-		</div>
-	</div>
-	
 	<div class="text-center">
 		<input class="btn btn-medium btn-primary" type="submit" value="Enregistrer les modifications">
 	</div>
