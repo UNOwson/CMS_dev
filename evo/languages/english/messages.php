@@ -216,7 +216,7 @@ return [
     'polls.nothing1'        => 'There are no polls!',
     'polls.nothing2'        => 'No poll to display.',
 	
-    'profile.title'         => 'Edit my profil :',
+    'profile.title'         => 'Edit profil of :',
     'profile.sn_title'      => 'Social Networks',
     'profile.prez_title'    => 'Presentation',
 	'profile.username'      => 'Username',
