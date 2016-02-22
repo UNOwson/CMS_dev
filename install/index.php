@@ -490,7 +490,7 @@ switch($cur_step) {
 							$key = $group.'.'.$priv;
 							foreach($groups as $g) {
 								if ($g['id'] <= $groups[$group]['id'] && (empty($g['ignore']) || !in_array($key, $g['ignore']))) {
-									$inserts[] = "('$key', {$g['id']}, NULL, 1)";
+									$inserts[] = "('$key', {$g['id']}, 1)";
 								}
 							}
 						}
@@ -500,13 +500,13 @@ switch($cur_step) {
 				foreach($groups as $g) {
 					if (!empty($g['force'])) {
 						foreach($g['force'] as $perm) {
-							$inserts[] = "('$perm', {$g['id']}, NULL, 1)";
+							$inserts[] = "('$perm', {$g['id']}, 1)";
 						}
 					}
 				}
 				
 				if ($inserts) {
-					Db::Exec('INSERT INTO `{permissions}` (`name`, `group_id`, `related_id`, `value`) VALUES ' . implode(',', $inserts));
+					Db::Exec('INSERT INTO `{permissions}` (`name`, `group_id`, `value`) VALUES ' . implode(',', $inserts));
 				}
 				
 				$salt = substr(str_shuffle('!@#$%^&*()_+}{POIUytreqqsdfgjkZXCVBNM<LKJHGHGFFSASDFGHJKL;./'), 0, 12);
