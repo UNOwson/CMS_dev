@@ -206,7 +206,6 @@ return [
     'tpolls.end'            => 'Date de fin',
 	
     'profile.title'         => 'Editions du profil de :',
-    'profile.title'         => 'Editer mon profil :',
     'profile.sn_title'      => 'Les Réseaux sociaux',
     'profile.prez_title'    => 'Présentation',
 	'profile.username'      => 'Nom d\'utilisateur',
