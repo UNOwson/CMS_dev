@@ -205,6 +205,14 @@ return [
     'tpolls.name'           => 'Nom du sondage',
     'tpolls.end'            => 'Date de fin',
 	
+    'poll.not_found'        => 'Sondage introuvable',
+    'poll.title'            => 'Sondage :',
+    'poll.thx_vote'         => 'Merci pour votre vote',
+    'poll.end'              => 'Date de fin',
+    'poll.send_vote'        => 'Envoyer mon vote',
+    'poll.end_vote'         => 'La période de vote est terminé pour ce sondage',
+    'poll.vote'             => 'Liste des votes',
+
     'profile.title'         => 'Editions du profil de :',
     'profile.sn_title'      => 'Les Réseaux sociaux',
     'profile.prez_title'    => 'Présentation',

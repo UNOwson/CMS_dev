@@ -3,10 +3,10 @@
 $poll = Db::Get('select * from {polls} where poll_id = ?', _GP('id'));
 
 if (!$poll) {
-	throw new Warning('Sondage introuvable !');
+	throw new Warning(''.__('poll.not_found').'');
 }
 
-$_title = 'Sondage: ' . $poll['name'];
+$_title = __('poll.title'). $poll['name'];
 
 $poll['choices'] = unserialize($poll['choices']);
 
@@ -21,11 +21,11 @@ if ($can_vote && isset($_POST['vote']) && isset($poll['choices'][$_POST['vote']]
 		'date' => time(),
 	));
 	$can_vote = false;
-	$_success = 'Merci d\'avoir voté !';
+	$_success = __('poll.thx_vote');
 }
 
 if ($poll['end_date'] < time()) {
-	$_notice = 'La période de vote est terminée pour ce sondage.';
+	$_notice = __('poll.end_vote');
 }
 
 $votes = Db::QueryAll('select choice, count(*) as c from {polls_votes} where poll_id = ? GROUP BY choice', _GP('id'), true);
@@ -57,13 +57,13 @@ $votes = Db::QueryAll('select choice, count(*) as c from {polls_votes} where pol
 			}
 		?>
 		</ul>
-		<button class="btn btn-success">Voter</button>
+		<button class="btn btn-success"><?= __('poll.send_vote') ?></button>
 	</form>
 <?php } ?>
 
 <?php
 	if (has_permission('mod.')) {
-		echo '<legend>Votes</legend>';
+		echo '<legend>'.__('poll.vote').'</legend>';
 
 		echo '<table class="table table-striped" style="font-size:120%">';
 			foreach(Db::QueryAll('select u.*, p.choice, p.date from {users} as u join {polls_votes} as p where poll_id = ? and p.user_id = u.id', _GP('id')) as $user)

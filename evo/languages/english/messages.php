@@ -204,6 +204,14 @@ return [
 
     'tpolls.name'           => 'Survey Name',
     'tpolls.end'            => 'End Date',
+
+    'poll.not_found'        => 'Survey not found',
+    'poll.title'            => 'Survey :',
+    'poll.thx_vote'         => 'Thank you to vote',
+    'poll.end'              => 'End Date',
+    'poll.send_vote'        => 'Send vote',
+    'poll.end_vote'         => 'The voting period has ended for this poll.',
+    'poll.vote'             => 'List of voting',
 	
     'profile.title'         => 'Edit my profil :',
     'profile.sn_title'      => 'Social Networks',
@@ -234,7 +242,6 @@ return [
     'profile.sn_website'    => 'My Website address',
     'profile.prez_textarea' => 'Introduce yourself !',
 
-<<<<<<< HEAD
     'profile.warning_bad_rank'          => 'You can not change someone highest ranking profile.',
     'profile.warning_bad_group'         => 'You can assign a group High more than your current group.',
     'profile.warning_ban'               => 'Sorry this user or email has been banned for :',
@@ -245,8 +252,6 @@ return [
     'profile.warning_update_pass_act'   => 'You must enter your current password to change your email address!',
     'profile.success_updated'           => 'Updated profile !',
 
-=======
->>>>>>> b41e6604f9b769619f58d59821907472f10820c8
     'getfile.notfound'      => 'File not found !',
     'getfile.badlink'       => 'Bad link',
 
