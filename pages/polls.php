@@ -3,7 +3,7 @@
 $polls = Db::QueryAll('select * from {polls} order by poll_id desc');
 
 if (empty($polls)) {
-	throw new Warning('IL n\'y a aucun sondage!', 'Aucun sondage à afficher.');
+	throw new Warning(''.__('polls.nothing1').'', ''.__('polls.nothing2').'');
 }
 
 $votes_c  = Db::QueryAll('select *, count(*) as count from {polls_votes} group by poll_id, choice');

@@ -212,6 +212,9 @@ return [
     'poll.send_vote'        => 'Send vote',
     'poll.end_vote'         => 'The voting period has ended for this poll.',
     'poll.vote'             => 'List of voting',
+
+    'polls.nothing1'        => 'There are no polls!',
+    'polls.nothing2'        => 'No poll to display.',
 	
     'profile.title'         => 'Edit my profil :',
     'profile.sn_title'      => 'Social Networks',
