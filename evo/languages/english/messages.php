@@ -234,6 +234,7 @@ return [
     'profile.sn_website'    => 'My Website address',
     'profile.prez_textarea' => 'Introduce yourself !',
 
+<<<<<<< HEAD
     'profile.warning_bad_rank'          => 'You can not change someone highest ranking profile.',
     'profile.warning_bad_group'         => 'You can assign a group High more than your current group.',
     'profile.warning_ban'               => 'Sorry this user or email has been banned for :',
@@ -244,6 +245,8 @@ return [
     'profile.warning_update_pass_act'   => 'You must enter your current password to change your email address!',
     'profile.success_updated'           => 'Updated profile !',
 
+=======
+>>>>>>> b41e6604f9b769619f58d59821907472f10820c8
     'getfile.notfound'      => 'File not found !',
     'getfile.badlink'       => 'Bad link',
 
