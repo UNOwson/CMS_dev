@@ -329,8 +329,8 @@ switch($cur_step) {
 								'slug' 				=> 'string',
 								'content'	 		=> 'text',
 								'format'			=> array('string', 'html'),
-								'metas'				=> 'text',
-								'attached_files'	=> 'text',
+								'metas'				=> array('text', null),
+								'attached_files'	=> array('text', null),
 				), false, true);
 				Db::AddIndex('pages_revs', 'index', array('page_id', 'revision'));
 				Db::AddIndex('pages_revs', 'index', array('slug'));
