@@ -1,5 +1,15 @@
-<?php defined('EVO') or die('Que fais-tu là?');
+<?php defined('EVO') or die('Que fais-tu là?'); ?>
 
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="613" height="285" id="dewplayer" align="middle">
+    <param name="allowScriptAccess" value="sameDomain" />
+    <param name="movie" value="../themes/WoW/dewslider.swf?&amp;transition=fade&amp;speed=15&amp;timer=5&amp;showbuttons=1&amp;showtitles=1" />
+    <param name="quality" value="high" />
+    <embed src="../themes/WoW/dewslider.swf?&amp;transition=fade&amp;speed=15&amp;timer=5&amp;showbuttons=1&amp;showtitles=1" quality="high" width="613" height="285" name="dewplayer" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+</object>
+
+<div class="wow_home1">
+
+<?php
 $num_art = (int) Db::Get('select count(*) from {pages} where `type` = "article" AND pub_rev > 0');
 
 if (!$num_art) {
@@ -57,3 +67,4 @@ if ($ptotal > 1) {
 
 echo '</div>';
 ?>
+</div>

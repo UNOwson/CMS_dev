@@ -580,6 +580,13 @@ function get_template($filename, $stock_theme = false)
 		return ROOT_DIR . '/evo/templates/' . $filename;
 	else
 		return false;
+
+	if (!$stock_theme && file_exists(ROOT_DIR . '/themes/' .Site('theme') . '/pages/' . $filename))
+		return ROOT_DIR . '/themes/' . Site('theme') . '/pages/' . trim($filename, '/');
+	elseif (file_exists(ROOT_DIR . '../pages/' . $filename))
+		return ROOT_DIR . '../pages/' . $filename;
+	else
+		return false;
 }
 
 /**
