@@ -1,86 +1,86 @@
-achievement: Gives the specified player an achievement or changes a statistic value. Use '*' to give all achievements.
-ban: Prevents the specified player from using this server
-ban-ip: Prevents the specified IP address from using
-banlist: View all players banned from this server
-clear: Clears the player's inventory. Can specify item anddata filters too.
-defaultgamemode: Set the default gamemode
-deop: Takes the specified player's operator status
-difficulty: Sets the game difficulty
-effect: AddsRemoves effects on players
-enchant: Adds enchantments to the item the player is currentlyholding. Specify 0 for the level to remove an enchantment. Specify force to ignore normal enchantment restrictions
-gamemode: Changes the player to a specific game mode
-gamerule: Sets a server's game rules
-give: Gives the specified player a certain amount of items
-help: help <page>						Shows the help menu
-kick: kick <player_name>				Removes the specified player from the server
-kill: kill <player_name>				Commits suicide, only usable as a player
-list: list								Lists all online players
-me: me <message>						Performs the specified action in chat
-minecraft:achievement: A Mojang provided command.
-minecraft:ban: A Mojang provided command.
-minecraft:ban-ip: A Mojang provided command.
-minecraft:banlist: A Mojang provided command.
-minecraft:clear: A Mojang provided command.
-minecraft:defaultgamemode: A Mojang provided command.
-minecraft:deop: A Mojang provided command.
-minecraft:difficulty: A Mojang provided command.
-minecraft:effect: A Mojang provided command.
-minecraft:enchant: A Mojang provided command.
-minecraft:gamemode: A Mojang provided command.
-minecraft:gamerule: A Mojang provided command.
-minecraft:give: A Mojang provided command.
-minecraft:help: A Mojang provided command.
-minecraft:kick: A Mojang provided command.
-minecraft:kill: A Mojang provided command.
-minecraft:list: A Mojang provided command.
-minecraft:me: A Mojang provided command.
-minecraft:op: A Mojang provided command.
-minecraft:pardon: A Mojang provided command.
-minecraft:pardon-ip: A Mojang provided command.
-minecraft:playsound: A Mojang provided command.
-minecraft:say: A Mojang provided command.
-minecraft:scoreboard: A Mojang provided command.
-minecraft:seed: A Mojang provided command.
-minecraft:setidletimeout: A Mojang provided command.
-minecraft:setworldspawn: A Mojang provided command.
-minecraft:spawnpoint: A Mojang provided command.
-minecraft:spreadplayers: A Mojang provided command.
-minecraft:tell: A Mojang provided command.
-minecraft:testfor: A Mojang provided command.
-minecraft:time: A Mojang provided command.
-minecraft:toggledownfall: A Mojang provided command.
-minecraft:tp: A Mojang provided command.
-minecraft:weather: A Mojang provided command.
-minecraft:whitelist: A Mojang provided command.
-minecraft:xp: A Mojang provided command.
-op: Gives the specified player operator status
-pardon: Allows the specified player to use this server
-pardon-ip: Allows the specified IP address to use this server
-playsound: Plays a sound to a given player
-plugins: Gets a list of plugins running on the server
-reload: Reloads the server configuration and plugins
-save-all: Saves the server to disk
-save-off: Disables server autosaving
-save-on: Enables server autosaving
-say: Broadcasts the given message as the sender
-scoreboard: Scoreboard control
-seed: Shows the world seed
-setblock: A Mojang provided command.
+achievement: Donne au joueur spécifié un succé ou modifie une valeur statistique. Utiliser '*' pour donner toutes les statistiques.
+ban: Interdit la connexion d'un joueur au serveur.
+ban-ip: Interdit l'utilisation d'une ip sur le serveur.
+banlist: Permet de voir toutes les interdictions.
+clear: Vide l'inventaire. Peux spécifié un type d'objet.
+defaultgamemode: Met le mode de jeu par défaut: Créative, survie, aventure
+deop: Retrograde de son rang un joueur.
+difficulty: Définit la difficulté.
+effect: Ajouter / Retirer des effets sur un joueur.
+enchant: Ajoute un pouvoir a l'outil en mains du joueur cible. Spécifier 0 pour retirer le pouvoir. Spécifier force pour ignorer la réstriction.
+gamemode: Change le mode de jeu d'un joueur: Créative, survie, aventure
+gamerule: Définit les règles du serveur.
+give: Donne au joueur les objets voulus.
+help: help <page>						Faire apparaitre le menu d'aide.
+kick: kick <player_name>				Ejecter un joueur du serveur.
+kill: kill <player_name>				Commet un suicide, utilisable par un joueur uniquement.
+list: list								Affiche les joueurs en ligne.
+me: me <message>						Affiche une action éffectuer.
+minecraft:achievement: Une commande de Mojang.
+minecraft:ban: Une commande de Mojang.
+minecraft:ban-ip: Une commande de Mojang.
+minecraft:banlist: Une commande de Mojang.
+minecraft:clear: Une commande de Mojang.
+minecraft:defaultgamemode: Une commande de Mojang.
+minecraft:deop: Une commande de Mojang.
+minecraft:difficulty: Une commande de Mojang.
+minecraft:effect: Une commande de Mojang.
+minecraft:enchant: Une commande de Mojang.
+minecraft:gamemode: Une commande de Mojang.
+minecraft:gamerule: Une commande de Mojang.
+minecraft:give: Une commande de Mojang.
+minecraft:help: Une commande de Mojang.
+minecraft:kick: Une commande de Mojang.
+minecraft:kill: Une commande de Mojang.
+minecraft:list: Une commande de Mojang.
+minecraft:me: Une commande de Mojang.
+minecraft:op: Une commande de Mojang.
+minecraft:pardon: Une commande de Mojang.
+minecraft:pardon-ip: Une commande de Mojang.
+minecraft:playsound: Une commande de Mojang.
+minecraft:say: Une commande de Mojang.
+minecraft:scoreboard: Une commande de Mojang.
+minecraft:seed: Une commande de Mojang.
+minecraft:setidletimeout: Une commande de Mojang.
+minecraft:setworldspawn: Une commande de Mojang.
+minecraft:spawnpoint: Une commande de Mojang.
+minecraft:spreadplayers: Une commande de Mojang.
+minecraft:tell: Une commande de Mojang.
+minecraft:testfor: Une commande de Mojang.
+minecraft:time: Une commande de Mojang.
+minecraft:toggledownfall: Une commande de Mojang.
+minecraft:tp: Une commande de Mojang.
+minecraft:weather: Une commande de Mojang.
+minecraft:whitelist: Une commande de Mojang.
+minecraft:xp: Une commande de Mojang.
+op: Donne les droits d'opérateur à un joueur.
+pardon: Retire l'interdiction d'un joueur.
+pardon-ip: Retire la réstriction d'une ip.
+playsound: Joue un sons à un joueur.
+plugins: Affiche la liste des plugins actifs.
+reload: Recharge la configuration et les plugins.
+save-all: Sauvegarde les informations au serveur.
+save-off: Désactive les sauvegardes automatiques.
+save-on: Active les sauvegardes automatiques.
+say: Affiche un message pour tout les joueurs.
+scoreboard: Contrôle du panneau de score.
+seed: Montre le seed de la map.
+setblock: Une commande de Mojang.
 setidletimeout: Sets the server's idle timeout
-setworldspawn: Sets a worlds's spawn point. If no coordinates are specified, the player's coordinates will be used.
-spawnpoint: Sets a player's spawn point
+setworldspawn: Définit le spawn de la map, si aucunes coordonnées sont spécifiées, l'emplacement du joueur est définit.
+spawnpoint: Définit le spawn d'un joueur ou groupe.
 spreadplayers: Spreads players around a point
-stop: Stops the server with optional reason
-summon: A Mojang provided command.
-tell: tell <player> <message>			Sends a private message to the given player
-tellraw: A Mojang provided command.
+stop: Stop le serveur, avec une raison optionnel.
+summon: Fait apparraître une créature.
+tell: tell <player> <message>			Envoyer une message privée à un joueur.
+tellraw: Une commande de Mojang.
 testfor: Tests whether a specifed player is online
-testforblock: A Mojang provided command.
-time: Changes the time on each world
+testforblock: Une commande de Mojang.
+time: Change l'heure de la map.
 timings: Records timings for all plugin events
-toggledownfall: Toggles rain onoff on a given world
-tp: Teleports the given player (or yourself) to another player or coordinates
+toggledownfall: Active/Désactive la pluie.
+tp: Téléporte un joueur.
 version: Gets the version of this server including any plugins in use
-weather: Changes the weather
-whitelist: Manages the list of players allowed to use this server
-xp: Gives the specified player a certain amount of experience. Specify L to give levels instead, with a negative amount resulting in taking levels.
+weather: Change le temps.
+whitelist: Gérer les utilisateurs autorisés ou non.
+xp: Donne de l'xp à un joueur. Spécifier L pour donner des niveau au lieu de l'xp.
