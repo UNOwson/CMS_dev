@@ -335,7 +335,7 @@ return [
     'register.field_invalid'            => 'Champ invalide',
     'register.field_require'            => 'Champ requis',
     'register.check_banlist'            => 'Désolé, ce nom ou courriel est banni :',
-    'register.exist_email'              => 'Un membre utilisant ce email existe déjà',
+    'register.exist_email'              => 'Un membre utilisant cet email existe déjà',
     'register.exist_username'           => 'Un membre utilisant ce nom d\'utilisateur existe déjà',
     'register.congratulation'           => 'Félicitation',
     'register.success'                  => 'Votre compte vient d\'être créé avec succès',
@@ -363,7 +363,7 @@ return [
     'dropdown.admin'        => 'Administration',
     'dropdown.logoff'       => 'Se Déconnecter',
 
-	'pageview.email_inv'        => 'E-mail invalidw',
+	'pageview.email_inv'        => 'E-mail invalide',
 	'pageview.inv_cod'          => 'Verification code mismatch!',
 	'pageview.new_comment_ad'   => 'Commentaire enregistré !',
 	'pageview.error'            => 'Cette page n\'existe pas. Vérifiez l\'url',
